@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!--
+    /   Multipurpose: Free Template by FreeHTML5.co
+    /   Author: https://freehtml5.co
+    /   Facebook: https://facebook.com/fh5co
+    /   Twitter: https://twitter.com/fh5co
+    -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Document title -->
+    <title>GrowAyu Assist POC</title>
+    
+    <link rel="stylesheet" href="css/font-awesome/font-awesome.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    
+    <!-- Template Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Responsive Stylesheet -->
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- pouchdb -->
+    <script src="http://cdn.jsdelivr.net/npm/pouchdb@7.1.1/dist/pouchdb.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" 
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+    <script src="assets/db.js"></script>
+    <script src="assets/healthseeker.js"></script>
+</head>
+
+<body>
+    <!-- Loader Start -->
+    
+    <!-- Loader End -->
+    
+<!--Doctors Page -->
+ <!-- Trust Start -->
+    <section class="hsentry" >
+        <div class="container">
+            <div class="title text-center">
+              
+                <h1 class="title-blue">Add Health Seeker</h1>
+                <div class="row" style=" padding-left: 5px; padding-right: 5px">
+               
+                
+                
+                    <form  action="contact.php" method="post">
+                  <div class="row">
+                     <div class="col-md-6">
+                        <div class="form-group in_name">
+                           <input name="name" type="text" id="name" class="form-control" placeholder="Name" required="required">
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="form-group in_email">
+                           <input  name="mail" type="email" id="email" class="form-control" placeholder="E-mail" required="required">
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="form-group in_email">
+                           <input name="phone" type="tel" class="form-control" id="phone" placeholder="Phone" required="required">
+                        </div>
+                     </div>
+                     
+                        <div class="col-md-6">
+                           <input type="button" value="Save Details" name="submit" id="submit" class="submitbtn small" title="Submit Your Message!" onclick="healthseeker.save()">
+                        </div>
+                     </div>
+                     </form>
+                  </div>
+               
+                
+           
+            </div>
+            
+        </div>
+    </section>
+
+   
+    
+    <!-- Footer Start -->
+    <section>
+    <footer>
+        
+        <!-- Foot Note Start -->
+        <div class="foot-note">
+            <div class="container">
+                <div
+                    class="footer-content text-center text-lg-left d-lg-flex justify-content-between align-items-center">
+                    <p class="mb-0" data-aos="fade-right" data-aos-offset="0">Design by <a href="http://onebitconsult.com" target="_blank" class="fh5-link">Onebit Consult</a>.</p>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- Foot Note End -->
+    </footer>
+    </section>
+    <!-- Footer Endt -->
+    
+</body>
+
+</html>
