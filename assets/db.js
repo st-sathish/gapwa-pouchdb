@@ -89,3 +89,13 @@ db.fetchAll = function(schema) {
 		});
 	});
 }
+
+db.find = function(schema, selector) {
+	return new Promise(function(resolve, reject) {
+		pouchDB.rel.find(schema, selector).then(res => {
+			resolve(res);
+		}).catch(err => {
+			reject(err);
+		});
+	})
+}

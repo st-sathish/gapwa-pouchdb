@@ -2,7 +2,7 @@ var sync = new (function() {
 	var self = this;
 
 	function fetchAll() {
-		syncMiddleware.findAll()
+		syncPresenter.findAll()
 			.then(res => {
 				console.log(res);
 				$('#syn_template').jqotesubtpl('templates/sync.tpl', {data: res.sync_tables});
@@ -13,7 +13,7 @@ var sync = new (function() {
 	}
 
 	$(document).ready(function() {
-        syncMiddleware.init(fetchAll);
+        syncPresenter.init(fetchAll);
 	});
 	return self;
 })();

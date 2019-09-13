@@ -34,8 +34,49 @@
 </head>
 
 <body>
-<a href="/gapwa/healthseeker_datatable.html" class="btn btn-primary">Health Seekers</a>
-<a href="/gapwa/sync.html" class="btn btn-primary">Sync</a>
+    <section class="hsentry" >
+        <div class="container">
+            <div class="title text-center">
+              
+                <h1 class="title-blue">Add Health Seeker</h1>
+                <div class="row" style=" padding-left: 5px; padding-right: 5px">
+               
+                
+                
+                    <form  action="contact.php" method="post">
+                  <div class="row">
+                     <div class="col-md-6">
+                        <div class="form-group in_name">
+                           <input name="name" type="text" id="name" class="form-control" placeholder="Name" required="required">
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="form-group in_email">
+                           <input  name="mail" type="email" id="email" class="form-control" placeholder="E-mail" required="required">
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="form-group in_email">
+                           <input name="phone" type="tel" class="form-control" id="phone" placeholder="Phone" required="required">
+                        </div>
+                     </div>
+                     
+                        <div class="col-md-6">
+                           <input type="button" value="Save Details" name="submit" id="submit" class="submitbtn small" title="Submit Your Message!" onclick="healthseeker.save()">
+                        </div>
+                     </div>
+                     </form>
+                  </div>
+               
+                
+           
+            </div>
+            
+        </div>
+    </section>
+
+   
+    
     <!-- Footer Start -->
     <section>
     <footer>
