@@ -12,15 +12,13 @@ var healthseeker = new (function() {
 		data.name = name;
 		data.phone = phone;
 		data.email = email;
-		db.save(data).then(res => {
-			alert("success");
-			$("#name").val('');
-			$("#phone").val('');
-			$("#email").val('');
-		}).catch(err => {
-			console.debug(err);
-			alert("err");
-		});
+		hsPresenter.saveOrUpdate(data)
+			.then(res => {
+				
+			})
+			.catch(err => {
+				
+			});
 	}
 
 	// call on document ready
