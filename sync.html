@@ -18,11 +18,9 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     
     <!-- Template Stylesheet -->
-    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <link rel="stylesheet" href="css/style.css">
     <!-- Responsive Stylesheet -->
-    <!-- <link rel="stylesheet" href="css/responsive.css"> -->
-    <!-- pouchdb -->
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="css/responsive.css">
      <!-- pouchdb -->
     <script src="assets/lib/pouchdb-7.1.1.min.js"></script>
     <script src="assets/lib/pouchdb.find.js"></script>
@@ -30,21 +28,30 @@
 
     <!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="assets/lib/jquery.jqote2.js"></script>
+
     <script src="assets/db.js"></script>
-    <script src="assets/healthseeker.datatable.js"></script>
+    <script src="assets/sync.api.js"></script>
+    <script src="assets/sync.middleware.js"></script>
+    <script src="assets/sync.js"></script>
+    <style>
+* {
+  box-sizing: border-box;
+}
+
+.row {
+  display: flex;
+}
+
+/* Create two equal columns that sits next to each other */
+.column {
+  flex: 50%;
+  padding: 10px;
+  overflow:auto;
+}
+</style>
 </head>
-
 <body>
-    <table id="example" class="display" style="width:100%">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Mobile</th>
-            </tr>
-        </thead>
-    </table>
+    <div id="syn_template"></div>
 </body>
-
 </html>
