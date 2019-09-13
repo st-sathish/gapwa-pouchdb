@@ -2,6 +2,13 @@ var healthseeker = new (function() {
 
 	var self = this;
 
+	function reset() {
+		$("#name").val('');
+		$("#phone").val('');
+		$("#email").val('');
+		location.href = '/gapwa/healthseeker_datatable.html';
+	}
+
 	self.save = function() {
 		var name = $("#name").val();
 		var phone = $("#phone").val();
@@ -14,7 +21,7 @@ var healthseeker = new (function() {
 		data.email = email;
 		hsPresenter.saveOrUpdate(data)
 			.then(res => {
-				
+				reset();
 			})
 			.catch(err => {
 				

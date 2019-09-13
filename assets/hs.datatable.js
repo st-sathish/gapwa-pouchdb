@@ -3,12 +3,12 @@ var hsDataTable = new (function() {
 	var datatable;
 
 	function fetchAllDocs() {
-		db.fetchAll()
+		db.findAll(hsPresenter.schema)
         	.then(res => {
         		var docs = [];
-        		var rows = res.rows;
+        		var rows = res.health_seekers;
         		rows.forEach(row => {
-        			docs.push(row.doc);
+        			docs.push(row);
         		});
         		refreshDataTable(docs);
         	})

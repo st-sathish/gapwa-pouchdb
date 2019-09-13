@@ -51,51 +51,14 @@ db.save = function(schema, data) {
 	});
 }
 
-db.update = function(schema, id, data) {
-	return new Promise (function(resolve, reject) {
-		pouchDB.rel.find(schema, id)
-			.then(res => {
-				db.save(schema, data).then(res => {
-
-				})
-				.catch(err => {
-
-				});
-			}).catch(err => {
-
-			});
-	});
-}
-
-db.destroy = function() {
+db.findAll = function(schema) {
 	return new Promise(function(resolve, reject) {
-		pouchDB.destroy().then(res => {
-			resolve(res);
-		})
-		.catch(err => {
-			reject(err);
-		})
-	})
-}
-
-db.fetchAll = function(schema) {
-	return new Promise(function(resolve, reject) {
-		pouchDB.rel.find(schema).then(function (result) {
-  			console.log("fetchAll()", result);
-  			resolve(result);
-		}).catch(function (err) {
+		pouchDB.rel.find(schema).then(res => {
+  			console.log("fetchAll()", res);
+  			resolve(res);
+		}).catch(err => {
   			console.log(err);
   			reject(err);
 		});
 	});
-}
-
-db.find = function(schema, selector) {
-	return new Promise(function(resolve, reject) {
-		pouchDB.rel.find(schema, selector).then(res => {
-			resolve(res);
-		}).catch(err => {
-			reject(err);
-		});
-	})
 }

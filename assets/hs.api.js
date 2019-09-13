@@ -3,7 +3,7 @@ var hsApi = {} || hsApi;
 hsApi.saveOrUpdateHealthSeeker = function(data) {
 	return new Promise(function(resolve, reject) {
 		var url = "/offline/save_update_healthseeker.php";
-		api.postApi(url, payload).then(res => {
+		api.postApi(url, data).then(res => {
 			resolve(res);
 		})
 		.catch(err => {

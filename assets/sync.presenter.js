@@ -14,7 +14,7 @@ var sync_tables = syncPresenter.sync_tables ||
 syncPresenter.schema = syncPresenter.schema || "sync_table";
 
 syncPresenter.init = function(p_callback) {
-	db.fetchAll(syncPresenter.schema)
+	db.findAll(syncPresenter.schema)
 		.then(res => {
 			if(res.sync_tables.length == 0) {
 				async.mapSeries(sync_tables, function(item, callback) {
@@ -66,7 +66,7 @@ function save(tables) {
 
 syncPresenter.findAll = function() {
 	return new Promise(function(resolve, reject) {
-		db.fetchAll(syncPresenter.schema).then(res => {
+		db.findAll(syncPresenter.schema).then(res => {
 			resolve(res);
 		}).catch(err => {
 			reject(err);
