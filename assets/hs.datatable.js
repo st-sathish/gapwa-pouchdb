@@ -3,18 +3,13 @@ var hsDataTable = new (function() {
 	var datatable;
 
 	function fetchAllDocs() {
-		db.findAll(hsPresenter.schema)
-        	.then(res => {
-        		var docs = [];
-        		var rows = res.health_seekers;
-        		rows.forEach(row => {
-        			docs.push(row);
-        		});
-        		refreshDataTable(docs);
+        hsPresenter.getOnlineHealthSeekers()
+        	.then(data => {
+        		refreshDataTable(data);
         	})
         	.catch(err => {
         		console.error(err);
-        	})
+        	});
 	}
 
 	function refreshDataTable(data) {
@@ -27,8 +22,8 @@ var hsDataTable = new (function() {
         datatable = $('#example').DataTable({
         	'columns': [
 		        { 'data': 'name' },
-		        { 'data': 'phone' },
-		        { 'data': 'email' }
+		        { 'data': 'age' },
+		        { 'data': 'mobile' }
     		]
         });
         fetchAllDocs();

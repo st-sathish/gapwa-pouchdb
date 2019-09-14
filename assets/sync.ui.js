@@ -13,7 +13,8 @@ var sync = new (function() {
 	}
 
 	$(document).ready(function() {
-        syncPresenter.init(fetchAll);
+		// not needed right now
+        //syncPresenter.init(fetchAll);
 	});
 	return self;
 })();

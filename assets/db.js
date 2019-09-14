@@ -3,14 +3,18 @@ var pouchDB = new PouchDB('growayuassist');
 
 // set all schemas
 pouchDB.setSchema([
-  {
+  /*{
     singular: 'sync_table',
     plural: 'sync_tables'
+  },*/
+  {
+    singular: 'online_health_seeker',
+    plural: 'online_health_seekers'
   },
   {
-    singular: 'health_seeker',
-    plural: 'health_seekers'
-  },
+    singular: 'offline_health_seeker',
+    plural: 'offline_health_seekers'
+  }/*,
   {
     singular: 'health_parameter_group',
     plural: 'health_parameter_groups'
@@ -36,7 +40,7 @@ pouchDB.setSchema([
       health_seeker: {belongsTo: 'health_seeker'},
       hcc_visit: {belongsTo: 'hcc_visit'}
     }
-  }
+  }*/
 ]);
 
 var db = {} || db;

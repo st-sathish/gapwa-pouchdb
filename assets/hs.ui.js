@@ -4,21 +4,21 @@ var healthseeker = new (function() {
 
 	function reset() {
 		$("#name").val('');
-		$("#phone").val('');
-		$("#email").val('');
+		$("#mobile").val('');
+		$("#age").val('');
 		location.href = '/gapwa/healthseeker_datatable.html';
 	}
 
 	self.save = function() {
 		var name = $("#name").val();
-		var phone = $("#phone").val();
-		var email = $("#email").val();
+		var mobile = $("#mobile").val();
+		var age = $("#age").val();
 
 		// construct
 		var data = {};
 		data.name = name;
-		data.phone = phone;
-		data.email = email;
+		data.mobile = mobile;
+		data.age = age;
 		hsPresenter.saveOrUpdate(data)
 			.then(res => {
 				reset();
