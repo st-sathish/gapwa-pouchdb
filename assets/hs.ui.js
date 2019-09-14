@@ -25,7 +25,7 @@ var healthseeker = new (function() {
 				reset();
 			})
 			.catch(err => {
-				
+				console.log(err);
 			});
 	}
 

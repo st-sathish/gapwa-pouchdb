@@ -33,15 +33,12 @@ var hsDataTable = new (function() {
 	}
 
 	function initOnlineDataTable() {
-
-	}
-
-	function initOfflineDataTable() {
-		
-	}
-
-	$(document).ready(function() {
-        datatable = $('#example').DataTable({
+		if(datatable) {
+			datatable.destroy();
+		}
+		$('#online').css("display", "block");
+		$('#offline').css("display", "none");
+		datatable = $('#online_datatable').DataTable({
         	'columns': [
 		        { 'data': 'name' },
 		        { 'data': 'age' },
@@ -51,14 +48,64 @@ var hsDataTable = new (function() {
 		        	'render' : function(row) {
 		        		console.debug(row);
 		        	 	var action = "<div>";
-		        	 	action = action + "<a href ='#'>Edit</a>&nbsp;&nbsp;";
-		        	 	action = action + "<a href ='javascript:void(0)' onclick='hsPresenter.sync(\""+row.id+"\")'>Sync</a>";
+		        	 	action = action + "<a href =/gapwa/addOrEditHealthSeeker.html?id="+row.id+">Edit</a>&nbsp;&nbsp;";
 		        	 	action = action + "<div>";
 		        	 	return action;
 		        	}
 		        }
     		]
         });
+	}
+
+	function initOfflineDataTable() {
+		if(datatable) {
+			datatable.destroy();
+		}
+		$('#online').css("display", "none");
+		$('#offline').css("display", "block");
+		datatable = $('#offline_datatable').DataTable({
+        	'columns': [
+		        { 'data': 'name' },
+		        { 'data': 'age' },
+		        { 'data': 'mobile' },
+		        { 'data': 'last_synced_at' },
+		        {
+		        	'data' : null,
+		        	'render' : function(row) {
+		        		console.debug(row);
+		        	 	var action = "<div>";
+		        	 	action = action + "<a href =/gapwa/addOrEditHealthSeeker.html?id="+row.id+">Edit</a>&nbsp;&nbsp;";
+		        	 	action = action + "<a href ='javascript:void(0)' onclick='hsDataTable.sync(\""+row.id+"\")'>Sync</a>";
+		        	 	action = action + "<div>";
+		        	 	return action;
+		        	}
+		        }
+    		]
+        });
+	}
+
+	self.searchHealthSeeker = function() {
+		hsPresenter.search('Vikas')
+			.then(res => {
+				console.log("search result", res);
+			})
+			.catch(err => {
+				console.debug(err);
+				alert(err);
+			});
+	};
+
+	self.sync = function(id) {
+		hsPresenter.sync(id)
+			.then(res => {
+				alert("Successfully Synced");
+			})
+			.catch(err => {
+				console.debug(err);
+			})
+	}
+	$(document).ready(function() {
+        hsDataTable.searchHealthSeeker();
 	});
 	return self;
 })();

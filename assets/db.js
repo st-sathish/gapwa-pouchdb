@@ -77,3 +77,13 @@ db.findOne = function(schema, id) {
     });
   });
 }
+
+db.find = function(schema, selector) {
+  return new Promise(function(resolve, reject) { 
+      pouchDB.rel.find(schema, selector).then(result => {
+          resolve(result);
+      }).catch(err => {
+          reject(err);
+      });
+  })
+}

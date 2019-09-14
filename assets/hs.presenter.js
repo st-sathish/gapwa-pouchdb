@@ -13,7 +13,7 @@ hsPresenter.saveOrUpdate = function(data) {
 		data.created_at = new Date().getTime();
 		data.updated_at = new Date().getTime();
 		var isOnline = window.navigator.onLine;
-		if(isOnline) {
+		if(!isOnline) {
 			hsApi.saveOrUpdateHealthSeeker(data).then(res => {
 				resolve(res);
 			})
@@ -35,6 +35,7 @@ hsPresenter.saveOrUpdate = function(data) {
 			})
 		} else {
 			data.mode = 'offline';
+			data.last_synced_at = null;
 			save(hsPresenter.offline_schema, data)
 				.then(res => {
 					resolve(res);
@@ -49,17 +50,29 @@ hsPresenter.saveOrUpdate = function(data) {
 hsPresenter.sync = function(docId) {
 	console.debug(docId);
 	return new Promise(function(resolve, reject) {
-		db.findOne(hsPresenter.offline_schema, docId).then(res => {
+		db.findOne(hsPresenter.offline_schema, docId)
+		.then(res => {
 			var rows = res[hsPresenter.offline_health_seeker_schema_plural];
 			return rows[0];
 		})
 		.then(row => {
-			hsApi.saveOrUpdateHealthSeeker(row).then(res => {
-				return res;
-			})
+			row.mode = 'offline';
+			return hsApi.saveOrUpdateHealthSeeker(row);
 		})
-		.then(res => {
-			resolve(res);
+		.then(response => {
+			return Promise.all([response.data, db.findOne(hsPresenter.offline_schema, docId)]);
+		})
+		.then(([remoteData, localData]) => {
+			var localRow = localData[hsPresenter.offline_health_seeker_schema_plural][0];
+			console.log("hello3", remoteData);
+			console.log("hello3", localRow);
+			//localRow.health_seeker_id = remoteData.health_seeker_id;
+			//localRow.updated_at = new Date().getTime();
+			//localRow.last_synced_at = new Date().getTime();
+			return save(hsPresenter.offline_schema, localRow);
+		})
+		.then(result => {
+			resolve(result);
 		})
 		.catch(err => {
 			reject(err);
@@ -91,7 +104,7 @@ hsPresenter.getOnlineHealthSeekers = function(data) {
 			reject("No Internet Connection");
 			return;
 		}
-		hsApi.getRemoteHealthSeekers('online')
+		hsApi.getRemoteHealthSeekers()
 			.then(res => {
 				resolve(res.data);
 			})
@@ -130,5 +143,24 @@ hsPresenter.getOfflineHealthSeekers = function(data) {
 			.catch(err => {
 				reject(err);
 			})
+	})
+}
+
+hsPresenter.search = function(query) {
+	return new Promise(function(resolve, reject) {
+		var selector = {'name': {'$elemMatch': {query}}};
+		console.log(selector);
+		db.find(hsPresenter.offline_schema, selector)
+        	.then(res => {
+        		var docs = [];
+        		var rows = res[hsPresenter.offline_health_seeker_schema_plural];
+        		rows.forEach(row => {
+        			docs.push(row);
+        		});
+        		resolve(docs);
+        	})
+        	.catch(err => {
+        		console.error(err);
+        	})
 	})
 }
