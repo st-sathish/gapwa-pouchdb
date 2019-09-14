@@ -22,7 +22,7 @@ var hsDataTable = new (function() {
 				refreshDataTable(data);
 			})
 			.catch(err => {
-				console.log(err);
+				alert(err);
 			})
 	}
 
@@ -33,7 +33,7 @@ var hsDataTable = new (function() {
 	}
 
 	function initOnlineDataTable() {
-		
+
 	}
 
 	function initOfflineDataTable() {
@@ -45,7 +45,17 @@ var hsDataTable = new (function() {
         	'columns': [
 		        { 'data': 'name' },
 		        { 'data': 'age' },
-		        { 'data': 'mobile' }
+		        { 'data': 'mobile' },
+		        {
+		        	'data' : null,
+		        	'render' : function(row) {
+		        	 	var action = "<div>";
+		        	 	action = action + "<a href ='#'>Edit</a>&nbsp;&nbsp;";
+		        	 	action = action + "<a href ='javascript:void(0)' onclick='hsPresenter.sync(\""+row.rev+"\")'>Sync</a>";
+		        	 	action = action + "<div>";
+		        	 	return action;
+		        	}
+		        }
     		]
         });
 	});

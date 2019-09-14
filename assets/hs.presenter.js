@@ -10,25 +10,49 @@ hsPresenter.saveOrUpdate = function(data) {
 	return new Promise(function(resolve, reject) {
 		//always 1 for time being
 		data.hcc_id = 1;
-		hsApi.saveOrUpdateHealthSeeker(data).then(res => {
-			resolve(res);
+		var isOnline = window.navigator.onLine;
+		if(isOnline) {
+			hsApi.saveOrUpdateHealthSeeker(data).then(res => {
+				resolve(res);
+			})
+			.catch(err => {
+				//service unavailable so save to local db
+				// if(err.status == 503 || err.status == 404) {
+				// 	data.mode = 'offline';
+				// 	save(hsPresenter.offline_schema, data)
+				// 		.then(res => {
+				// 			resolve(res);
+				// 		})
+				// 		.catch(err => {
+				// 			reject(err);
+				// 		})
+				// } else {
+				// 	reject(err);
+				// }
+			})
+		} else {
+			data.mode = 'offline';
+			save(hsPresenter.offline_schema, data)
+				.then(res => {
+					resolve(res);
+				})
+				.catch(err => {
+					reject(err);
+				})
+		}
+	})
+}
+
+hsPresenter.sync = function(revId) {
+	console.debug(revId);
+	/*return new Promise(function(resolve, reject) {
+		db.find().then(res => {
+
 		})
 		.catch(err => {
-			//service unavailable so save to local db
-			if(err.status == 503 || err.status == 404) {
-				data.mode = 'offline';
-				save(hsPresenter.offline_schema, data)
-					.then(res => {
-						resolve(res);
-					})
-					.catch(err => {
-						reject(err);
-					})
-			} else {
-				reject(err);
-			}
-		})
-	})
+
+		});
+	});*/
 }
 
 /**
@@ -51,6 +75,10 @@ function save(schema, data) {
 **/
 hsPresenter.getOnlineHealthSeekers = function(data) {
 	return new Promise(function(resolve, reject) {
+		if(!window.navigator.onLine) {
+			reject("No Internet Connection");
+			return;
+		}
 		hsApi.getRemoteHealthSeekers('online')
 			.then(res => {
 				resolve(res.data);
