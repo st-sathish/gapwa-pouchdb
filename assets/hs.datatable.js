@@ -2,20 +2,42 @@ var hsDataTable = new (function() {
 	var self = this;
 	var datatable;
 
-	function fetchAllDocs() {
-        hsPresenter.getOnlineHealthSeekers()
-        	.then(data => {
-        		refreshDataTable(data);
-        	})
-        	.catch(err => {
-        		console.error(err);
-        	});
+	self.getOfflineHealthSeekers = function() {
+		initOfflineDataTable();
+		hsPresenter.getOfflineHealthSeekers()
+			.then(data => {
+				console.log(data);
+				refreshDataTable(data);
+			})
+			.catch(err => {
+				console.log(err);
+			})
+	}
+
+	self.getOnlineHealthSeekers = function() {
+		initOnlineDataTable();
+		hsPresenter.getOnlineHealthSeekers()
+			.then(data => {
+				console.log(data);
+				refreshDataTable(data);
+			})
+			.catch(err => {
+				console.log(err);
+			})
 	}
 
 	function refreshDataTable(data) {
 		datatable.clear();
 	    datatable.rows.add(data);
 	    datatable.draw();
+	}
+
+	function initOnlineDataTable() {
+		
+	}
+
+	function initOfflineDataTable() {
+		
 	}
 
 	$(document).ready(function() {
@@ -26,7 +48,6 @@ var hsDataTable = new (function() {
 		        { 'data': 'mobile' }
     		]
         });
-        fetchAllDocs();
 	});
 	return self;
 })();

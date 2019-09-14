@@ -16,6 +16,7 @@ hsPresenter.saveOrUpdate = function(data) {
 		.catch(err => {
 			//service unavailable so save to local db
 			if(err.status == 503 || err.status == 404) {
+				data.mode = 'offline';
 				save(hsPresenter.offline_schema, data)
 					.then(res => {
 						resolve(res);
@@ -50,9 +51,9 @@ function save(schema, data) {
 **/
 hsPresenter.getOnlineHealthSeekers = function(data) {
 	return new Promise(function(resolve, reject) {
-		getHealthSeekers(hsPresenter.online_schema, hsPresenter.online_health_seeker_schema_plural)
+		hsApi.getRemoteHealthSeekers('online')
 			.then(res => {
-				resolve(res);
+				resolve(res.data);
 			})
 			.catch(err => {
 				reject(err);
@@ -60,7 +61,7 @@ hsPresenter.getOnlineHealthSeekers = function(data) {
 	})
 }
 
-function getHealthSeekers(schema, schema_plural) {
+function getLocalHealthSeekers(schema, schema_plural) {
 	return new Promise(function(resolve, reject) {
 		db.findAll(schema)
         	.then(res => {
@@ -82,7 +83,7 @@ function getHealthSeekers(schema, schema_plural) {
 */
 hsPresenter.getOfflineHealthSeekers = function(data) {
 	return new Promise(function(resolve, reject) {
-		getHealthSeekers(hsPresenter.offline_schema, hsPresenter.offline_health_seeker_schema_plural)
+		getLocalHealthSeekers(hsPresenter.offline_schema, hsPresenter.offline_health_seeker_schema_plural)
 			.then(res => {
 				resolve(res);
 			})
