@@ -10,12 +10,15 @@ hsPresenter.saveOrUpdate = function(data) {
 	return new Promise(function(resolve, reject) {
 		//always 1 for time being
 		data.hcc_id = 1;
+		data.created_at = new Date().getTime();
+		data.updated_at = new Date().getTime();
 		var isOnline = window.navigator.onLine;
 		if(isOnline) {
 			hsApi.saveOrUpdateHealthSeeker(data).then(res => {
 				resolve(res);
 			})
 			.catch(err => {
+				reject(err);
 				//service unavailable so save to local db
 				// if(err.status == 503 || err.status == 404) {
 				// 	data.mode = 'offline';
@@ -43,16 +46,25 @@ hsPresenter.saveOrUpdate = function(data) {
 	})
 }
 
-hsPresenter.sync = function(revId) {
-	console.debug(revId);
-	/*return new Promise(function(resolve, reject) {
-		db.find().then(res => {
-
+hsPresenter.sync = function(docId) {
+	console.debug(docId);
+	return new Promise(function(resolve, reject) {
+		db.findOne(hsPresenter.offline_schema, docId).then(res => {
+			var rows = res[hsPresenter.offline_health_seeker_schema_plural];
+			return rows[0];
+		})
+		.then(row => {
+			hsApi.saveOrUpdateHealthSeeker(row).then(res => {
+				return res;
+			})
+		})
+		.then(res => {
+			resolve(res);
 		})
 		.catch(err => {
-
+			reject(err);
 		});
-	});*/
+	});
 }
 
 /**

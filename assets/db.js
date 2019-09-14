@@ -66,3 +66,14 @@ db.findAll = function(schema) {
 		});
 	});
 }
+
+db.findOne = function(schema, id) {
+  return new Promise(function(resolve, reject) {
+    pouchDB.rel.find(schema).then(res => {
+        resolve(res);
+    }).catch(err => {
+        console.log(err);
+        reject(err);
+    });
+  });
+}

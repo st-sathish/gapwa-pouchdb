@@ -49,9 +49,10 @@ var hsDataTable = new (function() {
 		        {
 		        	'data' : null,
 		        	'render' : function(row) {
+		        		console.debug(row);
 		        	 	var action = "<div>";
 		        	 	action = action + "<a href ='#'>Edit</a>&nbsp;&nbsp;";
-		        	 	action = action + "<a href ='javascript:void(0)' onclick='hsPresenter.sync(\""+row.rev+"\")'>Sync</a>";
+		        	 	action = action + "<a href ='javascript:void(0)' onclick='hsPresenter.sync(\""+row.id+"\")'>Sync</a>";
 		        	 	action = action + "<div>";
 		        	 	return action;
 		        	}
