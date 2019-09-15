@@ -6,13 +6,14 @@ hsPresenter.offline_schema = hsPresenter.offline_schema || 'offline_health_seeke
 hsPresenter.online_health_seeker_schema_plural = hsPresenter.online_health_seeker_schema_plural || 'online_health_seekers';
 hsPresenter.offline_health_seeker_schema_plural = hsPresenter.offline_health_seeker_schema_plural || 'offline_health_seekers';
 
-hsPresenter.saveOrUpdate = function(data) {
+hsPresenter.save = function(data) {
 	return new Promise(function(resolve, reject) {
 		//always 1 for time being
 		data.hcc_id = 1;
 		data.created_at = new Date().getTime();
 		data.updated_at = new Date().getTime();
 		var isOnline = window.navigator.onLine;
+		alert("is online :"+isOnline);
 		if(!isOnline) {
 			hsApi.saveOrUpdateHealthSeeker(data).then(res => {
 				resolve(res);
@@ -47,29 +48,69 @@ hsPresenter.saveOrUpdate = function(data) {
 	})
 }
 
-hsPresenter.sync = function(docId) {
-	console.debug(docId);
+hsPresenter.update = function(id, data) {
 	return new Promise(function(resolve, reject) {
+		var isOnline = window.navigator.onLine;
+		if(!isOnline) {
+			hsApi.saveOrUpdateHealthSeeker(data).then(res => {
+				resolve(res);
+			})
+			.catch(err => {
+				reject(err);
+			})
+		} else {
+			db.findOne(hsPresenter.offline_schema, id)
+				.then(res => {
+					return res[hsPresenter.offline_health_seeker_schema_plural][0];
+				})
+				.then(row => {
+					console.log("update", row);
+					row.name = data.name;
+					row.age = data.age;
+					row.mobile = data.mobile;
+					row.updated_at = new Date().getTime();
+					return save(hsPresenter.offline_schema, row);
+				})
+				.then(result => {
+					resolve(result);
+				})
+				.catch(err => {
+					reject(err);
+				})
+		}
+	})
+}
+
+hsPresenter.sync = function(docId) {
+	return new Promise(function(resolve, reject) {
+		var isOnline = window.navigator.onLine;
+		if(!isOnline) {
+			reject("No Internet Connection");
+			return;
+		}
 		db.findOne(hsPresenter.offline_schema, docId)
 		.then(res => {
-			var rows = res[hsPresenter.offline_health_seeker_schema_plural];
-			return rows[0];
+			return res[hsPresenter.offline_health_seeker_schema_plural][0];
 		})
 		.then(row => {
 			row.mode = 'offline';
-			return hsApi.saveOrUpdateHealthSeeker(row);
+			return Promise.all([row, hsApi.saveOrUpdateHealthSeeker(row)]);
 		})
-		.then(response => {
-			return Promise.all([response.data, db.findOne(hsPresenter.offline_schema, docId)]);
+		.then(([row, response]) => {
+			var remoteData = response.data;
+			return Promise.all([row, remoteData, db.delete(hsPresenter.offline_schema, row)]);
 		})
-		.then(([remoteData, localData]) => {
-			var localRow = localData[hsPresenter.offline_health_seeker_schema_plural][0];
-			console.log("hello3", remoteData);
-			console.log("hello3", localRow);
-			//localRow.health_seeker_id = remoteData.health_seeker_id;
-			//localRow.updated_at = new Date().getTime();
-			//localRow.last_synced_at = new Date().getTime();
-			return save(hsPresenter.offline_schema, localRow);
+		.then(([row, remoteData, deleteObjRes]) => {
+			var data = {};
+			data.health_seeker_id = remoteData.health_seeker_id;
+			data.name = row.name;
+			data.age = row.age;
+			data.mobile = row.mobile;
+			data.created_at = row.created_at;
+			data.updated_at = new Date().getTime();
+			data.last_synced_at = new Date().getTime();
+			data.mode = remoteData.mode;
+			return save(hsPresenter.offline_schema, data);
 		})
 		.then(result => {
 			resolve(result);
@@ -98,13 +139,14 @@ function save(schema, data) {
 /**
 * get online health seekers
 **/
-hsPresenter.getOnlineHealthSeekers = function(data) {
+hsPresenter.getOnlineHealthSeekers = function() {
 	return new Promise(function(resolve, reject) {
 		if(!window.navigator.onLine) {
 			reject("No Internet Connection");
 			return;
 		}
-		hsApi.getRemoteHealthSeekers()
+		var data = {"mode": "online"};
+		hsApi.getRemoteHealthSeekers(data)
 			.then(res => {
 				resolve(res.data);
 			})
@@ -148,9 +190,12 @@ hsPresenter.getOfflineHealthSeekers = function(data) {
 
 hsPresenter.search = function(query) {
 	return new Promise(function(resolve, reject) {
-		var selector = {'name': {'$elemMatch': {query}}};
-		console.log(selector);
-		db.find(hsPresenter.offline_schema, selector)
+		var option = {
+			selector: {name: {$eq: 'vikas'}},
+        	sort: ['name']
+		}
+		var idxFields = ['name'];
+		db.find(hsPresenter.offline_schema, idxFields, option)
         	.then(res => {
         		var docs = [];
         		var rows = res[hsPresenter.offline_health_seeker_schema_plural];
@@ -158,6 +203,20 @@ hsPresenter.search = function(query) {
         			docs.push(row);
         		});
         		resolve(docs);
+        	})
+        	.catch(err => {
+        		console.error(err);
+        	})
+	})
+}
+
+hsPresenter.getOfflineHealthSeeker = function(docId) {
+	return new Promise(function(resolve, reject) {
+		db.findOne(hsPresenter.offline_schema, docId)
+        	.then(res => {
+        		var row = res[hsPresenter.offline_health_seeker_schema_plural][0];
+        		console.log("get helath seeker by id", row);
+        		resolve(row);
         	})
         	.catch(err => {
         		console.error(err);

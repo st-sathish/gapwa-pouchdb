@@ -36,10 +36,10 @@ hsApi.upstreamHealthSeeker = function(data) {
 	})
 }
 
-hsApi.getRemoteHealthSeekers = function() {
+hsApi.getRemoteHealthSeekers = function(data) {
 	return new Promise(function(resolve, reject) {
 		var url = "/offline/getHealthSeekerList.php";
-		api.postApi(url).then(res => {
+		api.postApi(url, data).then(res => {
 			resolve(res);
 		})
 		.catch(err => {

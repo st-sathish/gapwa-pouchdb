@@ -50,7 +50,7 @@ db.save = function(schema, data) {
 		pouchDB.rel.save(schema, data).then(res => {
 			resolve(res);
 		}).catch(err => {
-			reject(err);
+        reject(err);
 		})
 	});
 }
@@ -78,12 +78,33 @@ db.findOne = function(schema, id) {
   });
 }
 
-db.find = function(schema, selector) {
-  return new Promise(function(resolve, reject) { 
-      pouchDB.rel.find(schema, selector).then(result => {
-          resolve(result);
-      }).catch(err => {
+db.find = function(schema, idxFields, option) {
+  return new Promise(function(resolve, reject) {
+      pouchDB.createIndex({
+          index: {'fields': idxFields}
+      })
+      .then(res => {
+          console.debug(res);
+          return pouchDB.rel.find(schema, option);
+      })
+      .then(results => {
+          resolve(results);
+      })
+      .catch(err => {
           reject(err);
-      });
+      })
+  })
+}
+
+db.delete = function(schema, row) {
+  return new Promise(function(resolve, reject) {
+      var data = {"id": row.id, "rev": row.rev};
+      pouchDB.rel.del(schema, data)
+        .then(res => {
+            resolve(res);
+        })
+        .catch(err => {
+            reject(err);
+        });
   })
 }
