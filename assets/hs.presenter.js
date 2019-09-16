@@ -1,11 +1,5 @@
 var hsPresenter = {} || hsPresenter;
 
-hsPresenter.online_schema = hsPresenter.online_schema || 'online_health_seeker';
-hsPresenter.offline_schema = hsPresenter.offline_schema || 'offline_health_seeker';
-
-hsPresenter.online_health_seeker_schema_plural = hsPresenter.online_health_seeker_schema_plural || 'online_health_seekers';
-hsPresenter.offline_health_seeker_schema_plural = hsPresenter.offline_health_seeker_schema_plural || 'offline_health_seekers';
-
 hsPresenter.save = function(data) {
 	return new Promise(function(resolve, reject) {
 		//always 1 for time being
@@ -20,24 +14,11 @@ hsPresenter.save = function(data) {
 			})
 			.catch(err => {
 				reject(err);
-				//service unavailable so save to local db
-				// if(err.status == 503 || err.status == 404) {
-				// 	data.mode = 'offline';
-				// 	save(hsPresenter.offline_schema, data)
-				// 		.then(res => {
-				// 			resolve(res);
-				// 		})
-				// 		.catch(err => {
-				// 			reject(err);
-				// 		})
-				// } else {
-				// 	reject(err);
-				// }
 			})
 		} else {
 			data.mode = 'offline';
 			data.last_synced_at = null;
-			save(hsPresenter.offline_schema, data)
+			save(data)
 				.then(res => {
 					resolve(res);
 				})
@@ -59,20 +40,16 @@ hsPresenter.update = function(id, data) {
 				reject(err);
 			})
 		} else {
-			db.findOne(hsPresenter.offline_schema, id)
+			db.findOne(id)
+				.then(doc => {
+					doc.name = data.name;
+					doc.age = data.age;
+					doc.mobile = data.mobile;
+					doc.updated_at = new Date().getTime();
+					return update(doc);
+				})
 				.then(res => {
-					return res[hsPresenter.offline_health_seeker_schema_plural][0];
-				})
-				.then(row => {
-					console.log("update", row);
-					row.name = data.name;
-					row.age = data.age;
-					row.mobile = data.mobile;
-					row.updated_at = new Date().getTime();
-					return save(hsPresenter.offline_schema, row);
-				})
-				.then(result => {
-					resolve(result);
+					resolve(res);
 				})
 				.catch(err => {
 					reject(err);
@@ -88,29 +65,17 @@ hsPresenter.sync = function(docId) {
 			reject("No Internet Connection");
 			return;
 		}
-		db.findOne(hsPresenter.offline_schema, docId)
+		db.findOne(docId)
 		.then(res => {
-			return res[hsPresenter.offline_health_seeker_schema_plural][0];
-		})
-		.then(row => {
-			row.mode = 'offline';
-			return Promise.all([row, hsApi.saveOrUpdateHealthSeeker(row)]);
+			res.mode = 'offline';
+			return Promise.all([res, hsApi.saveOrUpdateHealthSeeker(res)]);
 		})
 		.then(([row, response]) => {
 			var remoteData = response.data;
-			return Promise.all([row, remoteData, db.delete(hsPresenter.offline_schema, row)]);
-		})
-		.then(([row, remoteData, deleteObjRes]) => {
-			var data = {};
-			data.health_seeker_id = remoteData.health_seeker_id;
-			data.name = row.name;
-			data.age = row.age;
-			data.mobile = row.mobile;
-			data.created_at = row.created_at;
-			data.updated_at = new Date().getTime();
-			data.last_synced_at = new Date().getTime();
-			data.mode = remoteData.mode;
-			return save(hsPresenter.offline_schema, data);
+			row.health_seeker_id = remoteData.health_seeker_id;
+			row.updated_at = new Date().getTime();
+			row.last_synced_at = new Date().getTime();
+			return update(row);
 		})
 		.then(result => {
 			resolve(result);
@@ -122,11 +87,26 @@ hsPresenter.sync = function(docId) {
 }
 
 /**
-* Save health seeker by schema
+* Save health seeker
 */
-function save(schema, data) {
+function save(data) {
 	return new Promise(function(resolve, reject) {
-		db.save(schema, data)
+		db.save(data)
+			.then(res => {
+				resolve(res);
+			})
+			.catch(err => {
+				reject(err);
+			})
+	})
+}
+
+/**
+* Update health seeker
+*/
+function update(data, option) {
+	return new Promise(function(resolve, reject) {
+		db.update(data, option)
 			.then(res => {
 				resolve(res);
 			})
@@ -156,16 +136,14 @@ hsPresenter.getOnlineHealthSeekers = function() {
 	})
 }
 
-function getLocalHealthSeekers(schema, schema_plural) {
+/**
+* get offline health seekers
+*/
+hsPresenter.getOfflineHealthSeekers = function(data) {
 	return new Promise(function(resolve, reject) {
-		db.findAll(schema)
-        	.then(res => {
-        		var docs = [];
-        		var rows = res[schema_plural];
-        		rows.forEach(row => {
-        			docs.push(row);
-        		});
-        		resolve(docs);
+		db.fetchAll()
+        	.then(rows => {
+        		resolve(rows);
         	})
         	.catch(err => {
         		console.error(err);
@@ -173,36 +151,14 @@ function getLocalHealthSeekers(schema, schema_plural) {
 	})
 }
 
-/**
-* get offline health seekers
-*/
-hsPresenter.getOfflineHealthSeekers = function(data) {
-	return new Promise(function(resolve, reject) {
-		getLocalHealthSeekers(hsPresenter.offline_schema, hsPresenter.offline_health_seeker_schema_plural)
-			.then(res => {
-				resolve(res);
-			})
-			.catch(err => {
-				reject(err);
-			})
-	})
-}
-
-hsPresenter.search = function(query) {
+hsPresenter.searchHealthSeeker = function(query) {
 	return new Promise(function(resolve, reject) {
 		var option = {
-			selector: {name: {$eq: 'vikas'}},
-        	sort: ['name']
+			selector: { name: 'Vikas'}
 		}
-		var idxFields = ['name'];
-		db.find(hsPresenter.offline_schema, idxFields, option)
+		db.search(option)
         	.then(res => {
-        		var docs = [];
-        		var rows = res[hsPresenter.offline_health_seeker_schema_plural];
-        		rows.forEach(row => {
-        			docs.push(row);
-        		});
-        		resolve(docs);
+        		resolve(res);
         	})
         	.catch(err => {
         		console.error(err);
@@ -212,11 +168,9 @@ hsPresenter.search = function(query) {
 
 hsPresenter.getOfflineHealthSeeker = function(docId) {
 	return new Promise(function(resolve, reject) {
-		db.findOne(hsPresenter.offline_schema, docId)
+		db.findOne(docId)
         	.then(res => {
-        		var row = res[hsPresenter.offline_health_seeker_schema_plural][0];
-        		console.log("get helath seeker by id", row);
-        		resolve(row);
+        		resolve(res);
         	})
         	.catch(err => {
         		console.error(err);

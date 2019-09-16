@@ -65,17 +65,17 @@ var hsDataTable = new (function() {
 		$('#offline').css("display", "block");
 		datatable = $('#offline_datatable').DataTable({
         	'columns': [
-		        { 'data': 'name' },
-		        { 'data': 'age' },
-		        { 'data': 'mobile' },
-		        { 'data': 'last_synced_at' },
+		        { 'data': 'doc.name' },
+		        { 'data': 'doc.age' },
+		        { 'data': 'doc.mobile' },
+		        { 'data': 'doc.last_synced_at' },
 		        {
 		        	'data' : null,
 		        	'render' : function(row) {
 		        		console.debug(row);
 		        	 	var action = "<div>";
-		        	 	action = action + "<a href =/gapwa/edit_health_seeker.html?mode=offline&id="+row.id+">Edit</a>&nbsp;&nbsp;";
-		        	 	action = action + "<a href ='javascript:void(0)' onclick='hsDataTable.sync(\""+row.id+"\")'>Sync</a>";
+		        	 	action = action + "<a href =/gapwa/edit_health_seeker.html?mode=offline&id="+row.doc._id+">Edit</a>&nbsp;&nbsp;";
+		        	 	action = action + "<a href ='javascript:void(0)' onclick='hsDataTable.sync(\""+row.doc._id+"\")'>Sync</a>";
 		        	 	action = action + "<div>";
 		        	 	return action;
 		        	}
@@ -85,7 +85,7 @@ var hsDataTable = new (function() {
 	}
 
 	self.searchHealthSeeker = function() {
-		hsPresenter.search(34)
+		hsPresenter.searchHealthSeeker('vikas')
 			.then(res => {
 				console.log("search result", res);
 			})
@@ -99,6 +99,7 @@ var hsDataTable = new (function() {
 		hsPresenter.sync(id)
 			.then(res => {
 				alert("Successfully Synced");
+				location.reload();
 			})
 			.catch(err => {
 				alert(err);

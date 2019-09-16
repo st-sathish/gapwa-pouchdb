@@ -68,7 +68,7 @@ var healthseeker = new (function() {
 		var parameters = new URL(window.location).searchParams;
 		if (parameters.get("id")) {
 			if(parameters.get("mode") == 'offline') {
-				initOfflineEdit(parameters.id);
+				initOfflineEdit(parameters.get("id"));
 			}
 		}
 	})
