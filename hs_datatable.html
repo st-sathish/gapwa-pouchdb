@@ -41,6 +41,10 @@
 <a href="/gapwa/add_health_seeker.html" class="btn btn-primary">Add Health Seeker</a>
 <a href="javascript:void(0)" class="btn btn-primary" onclick="hsDataTable.getOnlineHealthSeekers()">Online Health Seeker</a>
 <a href="javascript:void(0)" class="btn btn-primary" onclick="hsDataTable.getOfflineHealthSeekers()">Offline Health Seeker</a>
+<div class="col-md-12">
+        <div class="col-md-6"><input type="text" id="offline_search"></div>
+        <div class="col-md-2"><input type="button" value="Search" onclick="hsDataTable.searchOffline()"></div>
+</div>
     <div id="online" style="display:none;height: auto">
         <table id="online_datatable" class="display" style="width: 100%">
             <thead>

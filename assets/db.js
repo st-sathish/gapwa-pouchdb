@@ -1,10 +1,14 @@
 // initialize db
 var pouchDB = new PouchDB('growayuassist');
 
+
 // create index for fields
 pouchDB.createIndex({
     index: {
-        fields: ['name', 'age', 'mobile']
+        fields: ['name', 'mobile'],
+        name: 'hsindex',
+        ddoc: 'hsdoc',
+        type: 'json',
     }
 });
 

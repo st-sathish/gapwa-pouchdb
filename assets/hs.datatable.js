@@ -72,7 +72,6 @@ var hsDataTable = new (function() {
 		        {
 		        	'data' : null,
 		        	'render' : function(row) {
-		        		console.debug(row);
 		        	 	var action = "<div>";
 		        	 	action = action + "<a href =/gapwa/edit_health_seeker.html?mode=offline&id="+row.doc._id+">Edit</a>&nbsp;&nbsp;";
 		        	 	action = action + "<a href ='javascript:void(0)' onclick='hsDataTable.sync(\""+row.doc._id+"\")'>Sync</a>";
@@ -84,16 +83,18 @@ var hsDataTable = new (function() {
         });
 	}
 
-	self.searchHealthSeeker = function() {
-		hsPresenter.searchHealthSeeker('vikas')
+	self.searchOffline = function() {
+		var query = $("#offline_search").val();
+		hsPresenter.searchHealthSeeker(query)
 			.then(res => {
 				console.log("search result", res);
+				//refreshDataTable();
 			})
 			.catch(err => {
 				console.debug(err);
 				alert(err);
 			});
-	};
+	}
 
 	self.sync = function(id) {
 		hsPresenter.sync(id)
@@ -107,7 +108,7 @@ var hsDataTable = new (function() {
 			})
 	}
 	$(document).ready(function() {
-        hsDataTable.searchHealthSeeker();
+        
 	});
 	return self;
 })();

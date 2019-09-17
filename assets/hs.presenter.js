@@ -154,8 +154,12 @@ hsPresenter.getOfflineHealthSeekers = function(data) {
 hsPresenter.searchHealthSeeker = function(query) {
 	return new Promise(function(resolve, reject) {
 		var option = {
-			selector: { name: 'Vikas'}
-		}
+			'selector': { '$or': [
+									{ 'name': { '$regex': RegExp(query, "i") }}, 
+									{ 'mobile': { '$regex': RegExp(query, "i") }}
+								]
+						}
+		};
 		db.search(option)
         	.then(res => {
         		resolve(res);
