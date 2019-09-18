@@ -1,6 +1,6 @@
 var api = {} || api;
 
-var BASE_API = "http://localhost/gapwa";
+var BASE_API = "http://192.168.225.44/gapwa";
 
 api.postApi = function(url, payload) {
 	return new Promise(function(resolve, reject) {

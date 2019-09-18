@@ -10,6 +10,7 @@ hsPresenter.save = function(data) {
 		alert("is online :"+isOnline);
 		if(!isOnline) {
 			hsApi.saveOrUpdateHealthSeeker(data).then(res => {
+				console.log(res);
 				resolve(res);
 			})
 			.catch(err => {
