@@ -1,29 +1,19 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <!--
-    /   Multipurpose: Free Template by FreeHTML5.co
-    /   Author: https://freehtml5.co
-    /   Facebook: https://facebook.com/fh5co
-    /   Twitter: https://twitter.com/fh5co
-    -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Document title -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
     <title>GrowAyu Assist POC</title>
-    
-    <link rel="stylesheet" href="css/font-awesome/font-awesome.css">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    
-    <!-- Template Stylesheet -->
-    <!-- <link rel="stylesheet" href="css/style.css"> -->
-    <!-- Responsive Stylesheet -->
-    <!-- <link rel="stylesheet" href="css/responsive.css"> -->
-    <!-- pouchdb -->
+    <!-- Bootstrap core CSS -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Custom styles for this template -->
+    <link href="assets/css/simple-sidebar.css" rel="stylesheet">
+
     <link rel="stylesheet" href="assets/lib/css/jquery-ui.css">
-     <!-- pouchdb -->
+    <!-- pouchdb -->
     <script src="assets/lib/pouchdb-7.1.1.js"></script>
     <script src="assets/lib/pouchdb.find.js"></script>
 
@@ -36,43 +26,80 @@
     <script src="assets/hs.presenter.js"></script>
     <script src="assets/hs.datatable.js"></script>
 </head>
-
 <body>
-<div class="footer-content text-center text-lg-left d-lg-flex justify-content-between align-items-center mt-2">
-    <a href="/gapwa/add_health_seeker.html" class="btn btn-primary"><i class="fa fa-medkit" aria-hidden="true"></i> Add Health Seeker</a>
-    <a href="javascript:void(0)" class="btn btn-primary" onclick="hsDataTable.getOnlineHealthSeekers()"><i class="fa fa-signal" aria-hidden="true"></i> Online Health Seeker</a>
-    <a href="javascript:void(0)" class="btn btn-primary" onclick="hsDataTable.getOfflineHealthSeekers()"><i class="fa fa-chain-broken"></i> Offline Health Seeker</a>
-</div>
-
-    <div id="online" style="display:none;height: auto">
-        <table id="online_datatable" class="display" style="width: 100%">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Age</th>
-                    <th>Mobile</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-        </table>
-    </div>
-    <div id="offline" style="display:none;height: auto">
-        <div class="col-md-12">
-            <div class="col-md-6"><input type="text" id="offline_search"></div>
-            <div class="col-md-2"><input type="button" value="Search" onclick="hsDataTable.searchOffline()"></div>
+<div class="d-flex" id="wrapper">
+    <!-- Sidebar -->
+    <div class="border-right" id="sidebar-wrapper">
+        <div class="sidebar-heading text-center">GAPWA</div>
+        <div class="list-group list-group-flush">
+            <a href="index.html" class="list-group-item list-group-item-action bg-light"><i class="fa fa-tachometer" aria-hidden="true"> </i> Dashboard</a>
+            <a href="add_health_seeker.html" class="list-group-item list-group-item-action bg-light"><i class="fa fa-medkit" aria-hidden="true"> </i> Add Health Seeker</a>
+            <a href="#" class="list-group-item list-group-item-action bg-light"><i class="fa fa-signal" aria-hidden="true"> </i> Online Health Seeker</a>
+            <a href="#" class="list-group-item list-group-item-action bg-light"><i class="fa fa-chain-broken"> </i> Offline Health Seeker</a>
         </div>
-        <table id="offline_datatable" class="display" style="width: 100%">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Age</th>
-                    <th>Mobile</th>
-                    <th>Last Synced At</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-        </table>
     </div>
-</body>
+    <div id="page-content-wrapper">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+            <i class="fa fa-bars" id="menu-toggle"></i>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#"><i class="fa fa-home" aria-hidden="true"></i> <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#"><i class="fa fa-cog" aria-hidden="true"></i> Settings</a>
+                            <a class="dropdown-item" href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container-fluid">
+            <div id="online" style="display:none;height: auto">
+                <table id="online_datatable" class="display" style="width: 100%">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Mobile</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <div id="offline" style="display:none;height: auto">
+                <div class="col-md-12">
+                    <div class="col-md-6"><input type="text" id="offline_search"></div>
+                    <div class="col-md-2"><input type="button" value="Search" onclick="hsDataTable.searchOffline()"></div>
+                </div>
+                <table id="offline_datatable" class="display" style="width: 100%">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Mobile</th>
+                        <th>Last Synced At</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
 
+        </div>
+    </div>
+</div>
+<!-- Bootstrap core JavaScript -->
+<script src="assets/vendor/jquery/jquery.min.js"></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+</script>
+</body>
 </html>
