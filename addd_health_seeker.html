@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!--
+    /   Multipurpose: Free Template by FreeHTML5.co
+    /   Author: https://freehtml5.co
+    /   Facebook: https://facebook.com/fh5co
+    /   Twitter: https://twitter.com/fh5co
+    -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Document title -->
+    <title>GrowAyu Assist POC</title>
+    
+    <link rel="stylesheet" href="css/font-awesome/font-awesome.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    
+    <!-- Template Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Responsive Stylesheet -->
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- pouchdb -->
+    <script src="assets/lib/pouchdb-7.1.1.min.js"></script>
+    <script src="assets/lib/pouchdb.upsert.js"></script>
+    <script src="assets/lib/pouchdb.find.js"></script>
+    <script src="assets/lib/pouchdb.relational-pouch.js"></script>
+
+    <!-- jquery -->
+    <script src="assets/lib/jquery-3.4.1.min.js"></script>
+
+    <script src="assets/api.js"></script>
+    <script src="assets/db.js"></script>
+    <script src="assets/hs.api.js"></script>
+    <script src="assets/hs.presenter.js"></script>
+    <script src="assets/hs.ui.js"></script>
+</head>
+
+<body>
+   <section class="hsentry col-sm-6 offset-sm-6" >
+        <div class="container">
+            <div class="title text-center">
+                <h1 class="title-blue mt-5" style="font-size:25px;">Add Health Seeker</h1>
+                <div class="row" style=" padding-left: 5px; padding-right: 5px">
+                    <form  action="contact.php" method="post">
+                  <div class="row">
+                     <div class="col-md-12">
+                        <div class="form-group in_name">
+                           <input type="text" name="name" id="name" class="form-control" placeholder=" Name" required="required">
+                        </div>
+                     </div>
+                     <div class="col-md-12">
+                        <div class="form-group in_email">
+                           <input name="age" type="text" id="age" class="form-control" placeholder=" Age" required="required">
+                        </div>
+                     </div>
+                     <div class="col-md-12">
+                        <div class="form-group in_email">
+                           <input name="mobile" type="tel" class="form-control" id="mobile" placeholder=" Mobile" required="required">
+                        </div>
+                     </div>
+                        <div class="col-md-12">
+                           <input type="button" value="Save Details" style="font-size:15px;" name="submit" id="submit" class="submitbtn small" title="Submit Your Message!" onclick="healthseeker.save()">
+                        </div>
+                     </div>
+                     </form>
+                  </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

@@ -38,9 +38,12 @@
 </head>
 
 <body>
-<a href="/gapwa/add_health_seeker.html" class="btn btn-primary">Add Health Seeker</a>
-<a href="javascript:void(0)" class="btn btn-primary" onclick="hsDataTable.getOnlineHealthSeekers()">Online Health Seeker</a>
-<a href="javascript:void(0)" class="btn btn-primary" onclick="hsDataTable.getOfflineHealthSeekers()">Offline Health Seeker</a>
+<div class="footer-content text-center text-lg-left d-lg-flex justify-content-between align-items-center mt-2">
+    <a href="/gapwa/add_health_seeker.html" class="btn btn-primary"><i class="fa fa-medkit" aria-hidden="true"></i> Add Health Seeker</a>
+    <a href="javascript:void(0)" class="btn btn-primary" onclick="hsDataTable.getOnlineHealthSeekers()"><i class="fa fa-signal" aria-hidden="true"></i> Online Health Seeker</a>
+    <a href="javascript:void(0)" class="btn btn-primary" onclick="hsDataTable.getOfflineHealthSeekers()"><i class="fa fa-chain-broken"></i> Offline Health Seeker</a>
+</div>
+
     <div id="online" style="display:none;height: auto">
         <table id="online_datatable" class="display" style="width: 100%">
             <thead>
