@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2fe38bf7-6d91-4942-a195-fa5bd7b27063" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/add_health_seeker.html" beforeDir="false" afterPath="$PROJECT_DIR$/addd_health_seeker.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/bootstrap/bootstrap-grid.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/bootstrap/bootstrap-grid.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/bootstrap/bootstrap-reboot.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/bootstrap/bootstrap-reboot.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/bootstrap/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/bootstrap/bootstrap.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hs_datatable.html" beforeDir="false" afterPath="$PROJECT_DIR$/hs_datatable.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addd_health_seeker.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/edit_health_seeker.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,8 +18,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hs_datatable.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="479">
-              <caret line="52" column="35" selection-start-line="52" selection-start-column="35" selection-end-line="52" selection-end-column="35" />
+            <state relative-caret-position="154">
+              <caret line="42" column="89" selection-start-line="42" selection-start-column="89" selection-end-line="42" selection-end-column="89" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -32,10 +29,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hss_datatable.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="47" selection-start-line="47" selection-end-line="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-280">
-              <caret line="23" column="33" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
+            <state relative-caret-position="140">
+              <caret line="21" column="62" selection-start-line="21" selection-start-column="62" selection-end-line="21" selection-end-column="62" />
             </state>
           </provider>
         </entry>
@@ -43,31 +49,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/hs.presenter.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2295">
-              <caret line="153" selection-start-line="153" selection-end-line="153" />
+            <state relative-caret-position="319">
+              <caret line="133" selection-start-line="133" selection-end-line="133" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/addd_health_seeker.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="38" selection-start-line="38" selection-end-line="38" />
-              <folding>
-                <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#3;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/add_health_seeker.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="36" column="33" selection-start-line="36" selection-start-column="33" selection-end-line="36" selection-end-column="33" />
+            <state relative-caret-position="60">
+              <caret line="31" column="60" lean-forward="true" selection-start-line="31" selection-start-column="60" selection-end-line="31" selection-end-column="60" />
               <folding>
                 <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -79,7 +71,16 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/edit_health_seeker.html">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-10">
+              <caret line="65" column="70" lean-forward="true" selection-start-line="65" selection-start-column="70" selection-end-line="65" selection-end-column="70" />
+              <folding>
+                <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#3;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -113,7 +114,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/hs_datatable.html" />
         <option value="$PROJECT_DIR$/css/style.css" />
         <option value="$PROJECT_DIR$/css/responsive.css" />
         <option value="$PROJECT_DIR$/indexx.php" />
@@ -124,9 +124,11 @@
         <option value="$PROJECT_DIR$/dashboard.html" />
         <option value="$PROJECT_DIR$/indexx.html" />
         <option value="$PROJECT_DIR$/aadd_health_seeker.html" />
-        <option value="$PROJECT_DIR$/hss_datatable.html" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/add_health_seeker.html" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/hss_datatable.html" />
+        <option value="$PROJECT_DIR$/hs_datatable.html" />
+        <option value="$PROJECT_DIR$/edit_health_seeker.html" />
       </list>
     </option>
   </component>
@@ -147,16 +149,6 @@
             <path>
               <item name="gapwa" type="b2602c69:ProjectViewProjectNode" />
               <item name="gapwa" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="gapwa" type="b2602c69:ProjectViewProjectNode" />
-              <item name="gapwa" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="gapwa" type="b2602c69:ProjectViewProjectNode" />
-              <item name="gapwa" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -198,15 +190,16 @@
       <workItem from="1568783515019" duration="367000" />
       <workItem from="1568785230786" duration="10214000" />
       <workItem from="1568797976246" duration="13736000" />
-      <workItem from="1568818767646" duration="267000" />
+      <workItem from="1568818767646" duration="1556000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25238000" />
+    <option name="totallyTimeSpent" value="26527000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1366" height="710" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16742425" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -265,20 +258,6 @@
     <entry file="file://$PROJECT_DIR$/navbar.html" />
     <entry file="file://$PROJECT_DIR$/menu.html" />
     <entry file="file://$PROJECT_DIR$/dashboard.html" />
-    <entry file="file://$PROJECT_DIR$/hss_datatable.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="40" column="58" selection-start-line="40" selection-start-column="58" selection-end-line="40" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/hs.presenter.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2295">
-          <caret line="153" selection-start-line="153" selection-end-line="153" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/bootstrap.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -296,10 +275,61 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/add_health_seeker.html">
+    <entry file="file://$PROJECT_DIR$/iindex.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="36" column="33" selection-start-line="36" selection-start-column="33" selection-end-line="36" selection-end-column="33" />
+        <state relative-caret-position="154">
+          <caret line="36" column="18" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/addd_health_seeker.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="34" column="44" lean-forward="true" selection-start-line="34" selection-start-column="44" selection-end-line="34" selection-end-column="44" />
+          <folding>
+            <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#3;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="21" column="62" selection-start-line="21" selection-start-column="62" selection-end-line="21" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hss_datatable.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="47" selection-start-line="47" selection-end-line="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hs_datatable.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="42" column="89" selection-start-line="42" selection-start-column="89" selection-end-line="42" selection-end-column="89" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/hs.presenter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="133" selection-start-line="133" selection-end-line="133" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/edit_health_seeker.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-10">
+          <caret line="65" column="70" lean-forward="true" selection-start-line="65" selection-start-column="70" selection-end-line="65" selection-end-column="70" />
           <folding>
             <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -308,42 +338,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/edit_health_seeker.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hs_datatable.html">
+    <entry file="file://$PROJECT_DIR$/eedit_health_seeker.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="479">
-          <caret line="52" column="35" selection-start-line="52" selection-start-column="35" selection-end-line="52" selection-end-column="35" />
+        <state relative-caret-position="255">
+          <caret line="68" column="181" lean-forward="true" selection-start-line="68" selection-start-column="150" selection-end-line="68" selection-end-column="181" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/add_health_seeker.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="31" column="60" lean-forward="true" selection-start-line="31" selection-start-column="60" selection-end-line="31" selection-end-column="60" />
           <folding>
-            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iindex.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="36" column="18" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-280">
-          <caret line="23" column="33" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addd_health_seeker.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="38" selection-start-line="38" selection-end-line="38" />
-          <folding>
-            <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#3;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#3;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
