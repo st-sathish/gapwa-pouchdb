@@ -6,7 +6,7 @@ var healthseeker = new (function() {
 		$("#name").val('');
 		$("#mobile").val('');
 		$("#age").val('');
-		location.href = '/gapwa/hs_datatable.html';
+		location.href = '/gapwa/online_hs_datatable.html';
 	}
 
 	self.save = function() {
