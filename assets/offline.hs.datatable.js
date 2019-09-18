@@ -24,9 +24,8 @@ var hsDataTable = new (function() {
 		if(datatable) {
 			datatable.destroy();
 		}
-		$('#online').css("display", "none");
-		$('#offline').css("display", "block");
 		datatable = $('#offline_datatable').DataTable({
+			"searching": false,
         	'columns': [
 		        { 'data': 'name' },
 		        { 'data': 'age' },

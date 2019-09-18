@@ -59,12 +59,17 @@
             </div>
         </nav>
         <div class="container-fluid">
-            <table id="online_datatable" class="display" style="width: 100%">
+            <div class="col-md-12">
+                <div class="col-md-6"><input type="text" id="offline_search"></div>
+                <div class="col-md-2"><input type="button" value="Search" onclick="hsDataTable.searchOffline()"></div>
+            </div>
+            <table id="offline_datatable" class="display" style="width: 100%">
                 <thead>
                 <tr>
                     <th>Name</th>
                     <th>Age</th>
                     <th>Mobile</th>
+                    <th>Last Synced At</th>
                     <th>Actions</th>
                 </tr>
                 </thead>

@@ -157,6 +157,9 @@ hsPresenter.getOfflineHealthSeekers = function(data) {
         	.then(rows => {
         		var docs = [];
         		for(var i =0;i < rows.length;i++) {
+        			if(!rows[i].doc.name) {
+        				continue;
+        			}
         			docs.push(rows[i].doc);
         		}
         		resolve(docs);
