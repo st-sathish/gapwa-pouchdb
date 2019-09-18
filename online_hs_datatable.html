@@ -11,19 +11,20 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Custom styles for this template -->
     <link href="assets/css/simple-sidebar.css" rel="stylesheet">
-    <script src="assets/lib/pouchdb-7.1.1.min.js"></script>
-    <script src="assets/lib/pouchdb.upsert.js"></script>
+
+    <link rel="stylesheet" href="assets/lib/css/jquery-ui.css">
+    <!-- pouchdb -->
+    <script src="assets/lib/pouchdb-7.1.1.js"></script>
     <script src="assets/lib/pouchdb.find.js"></script>
-    <script src="assets/lib/pouchdb.relational-pouch.js"></script>
 
     <!-- jquery -->
     <script src="assets/lib/jquery-3.4.1.min.js"></script>
-
-    <script src="assets/api.js"></script>
+    <script src="assets/lib/jquery.dataTables.min.js"></script>
     <script src="assets/db.js"></script>
+    <script src="assets/api.js"></script>
     <script src="assets/hs.api.js"></script>
     <script src="assets/hs.presenter.js"></script>
-    <script src="assets/hs.ui.js"></script>
+    <script src="assets/online.hs.datatable.js"></script>
 </head>
 <body>
 <div class="d-flex" id="wrapper">
@@ -58,42 +59,23 @@
             </div>
         </nav>
         <div class="container-fluid">
-                <div class="col-sm-12 col-md-12" id = "bor">
-                    <div class="col-sm-4 offset-sm-4">
-                        <div class="title text-center">
-                            <h1 class="title-blue mt-5" style="font-size:25px;">Add Health Seeker</h1>
-                            <div class="row" style=" padding-left: 5px; padding-right: 5px">
-                                <form  action="contact.php" method="post">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group in_name">
-                                                <input type="text" name="name" id="name" class="form-control" placeholder=" Name" required="required">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group in_email">
-                                                <input name="age" type="text" id="age" class="form-control" placeholder=" Age" required="required">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group in_email">
-                                                <input name="mobile" type="tel" class="form-control" id="mobile" placeholder=" Mobile" required="required">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <input type="button" value="Save Details" style="font-size:15px;" name="submit" id="submit" class="submitbtn small" title="Submit Your Message!" onclick="healthseeker.save()">
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                </div>
-            </div>
+            <table id="online_datatable" class="display" style="width: 100%">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Mobile</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
     </div>
 </div>
 <!-- Bootstrap core JavaScript -->
-<script src="assets/vendor/jquery/jquery.min.js"></script>
+<script src="assets/lib/jquery-3.4.1.min.js"></script>
 <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/lib/jquery.dataTables.min.js"></script>
 <script>
     $("#menu-toggle").click(function(e) {
         e.preventDefault();

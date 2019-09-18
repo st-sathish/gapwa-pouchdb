@@ -24,7 +24,7 @@
     <script src="assets/api.js"></script>
     <script src="assets/hs.api.js"></script>
     <script src="assets/hs.presenter.js"></script>
-    <script src="assets/hs.datatable.js"></script>
+    <script src="assets/offline.hs.datatable.js"></script>
 </head>
 <body>
 <div class="d-flex" id="wrapper">
@@ -34,8 +34,8 @@
         <div class="list-group list-group-flush">
             <a href="index.html" class="list-group-item list-group-item-action bg-light"><i class="fa fa-tachometer" aria-hidden="true"> </i> Dashboard</a>
             <a href="add_health_seeker.html" class="list-group-item list-group-item-action bg-light"><i class="fa fa-medkit" aria-hidden="true"> </i> Add Health Seeker</a>
-            <a href="#" class="list-group-item list-group-item-action bg-light"><i class="fa fa-signal" aria-hidden="true"> </i> Online Health Seeker</a>
-            <a href="#" class="list-group-item list-group-item-action bg-light"><i class="fa fa-chain-broken"> </i> Offline Health Seeker</a>
+            <a href="online_hs_datatable.html" class="list-group-item list-group-item-action bg-light"><i class="fa fa-signal" aria-hidden="true"> </i> Online Health Seeker</a>
+            <a href="offline_hs_datatable.html" class="list-group-item list-group-item-action bg-light"><i class="fa fa-chain-broken"> </i> Offline Health Seeker</a>
         </div>
     </div>
     <div id="page-content-wrapper">
@@ -59,42 +59,23 @@
             </div>
         </nav>
         <div class="container-fluid">
-            <div id="online" style="display:none;height: auto">
-                <table id="online_datatable" class="display" style="width: 100%">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Age</th>
-                        <th>Mobile</th>
-                        <th>Actions</th>
-                    </tr>
-                    </thead>
-                </table>
-            </div>
-            <div id="offline" style="display:none;height: auto">
-                <div class="col-md-12">
-                    <div class="col-md-6"><input type="text" id="offline_search"></div>
-                    <div class="col-md-2"><input type="button" value="Search" onclick="hsDataTable.searchOffline()"></div>
-                </div>
-                <table id="offline_datatable" class="display" style="width: 100%">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Age</th>
-                        <th>Mobile</th>
-                        <th>Last Synced At</th>
-                        <th>Actions</th>
-                    </tr>
-                    </thead>
-                </table>
-            </div>
-
+            <table id="online_datatable" class="display" style="width: 100%">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Mobile</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+            </table>
         </div>
     </div>
 </div>
 <!-- Bootstrap core JavaScript -->
-<script src="assets/vendor/jquery/jquery.min.js"></script>
+<script src="assets/lib/jquery-3.4.1.min.js"></script>
 <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/lib/jquery.dataTables.min.js"></script>
 <script>
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
