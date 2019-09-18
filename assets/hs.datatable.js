@@ -65,16 +65,16 @@ var hsDataTable = new (function() {
 		$('#offline').css("display", "block");
 		datatable = $('#offline_datatable').DataTable({
         	'columns': [
-		        { 'data': 'doc.name' },
-		        { 'data': 'doc.age' },
-		        { 'data': 'doc.mobile' },
-		        { 'data': 'doc.last_synced_at' },
+		        { 'data': 'name' },
+		        { 'data': 'age' },
+		        { 'data': 'mobile' },
+		        { 'data': 'last_synced_at' },
 		        {
 		        	'data' : null,
 		        	'render' : function(row) {
 		        	 	var action = "<div>";
-		        	 	action = action + "<a href =/gapwa/edit_health_seeker.html?mode=offline&id="+row.doc._id+">Edit</a>&nbsp;&nbsp;";
-		        	 	action = action + "<a href ='javascript:void(0)' onclick='hsDataTable.sync(\""+row.doc._id+"\")'>Sync</a>";
+		        	 	action = action + "<a href =/gapwa/edit_health_seeker.html?mode=offline&id="+row._id+">Edit</a>&nbsp;&nbsp;";
+		        	 	action = action + "<a href ='javascript:void(0)' onclick='hsDataTable.sync(\""+row._id+"\")'>Sync</a>";
 		        	 	action = action + "<div>";
 		        	 	return action;
 		        	}
@@ -88,7 +88,7 @@ var hsDataTable = new (function() {
 		hsPresenter.searchHealthSeeker(query)
 			.then(res => {
 				console.log("search result", res);
-				//refreshDataTable();
+				refreshDataTable(res);
 			})
 			.catch(err => {
 				console.debug(err);

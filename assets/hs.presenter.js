@@ -16,6 +16,18 @@ hsPresenter.save = function(data) {
 				reject(err);
 			})
 		} else {
+			if(data.name == '') {
+				reject("Please enter your name");
+				return;
+			}
+			if(data.age == '') {
+				reject("Please enter your age");
+				return;
+			}
+			if(data.mobile == '') {
+				reject("Please enter your mobile");
+				return;
+			}
 			data.mode = 'offline';
 			data.last_synced_at = null;
 			save(data)
@@ -143,7 +155,11 @@ hsPresenter.getOfflineHealthSeekers = function(data) {
 	return new Promise(function(resolve, reject) {
 		db.fetchAll()
         	.then(rows => {
-        		resolve(rows);
+        		var docs = [];
+        		for(var i =0;i < rows.length;i++) {
+        			docs.push(rows[i].doc);
+        		}
+        		resolve(docs);
         	})
         	.catch(err => {
         		console.error(err);
@@ -162,7 +178,7 @@ hsPresenter.searchHealthSeeker = function(query) {
 		};
 		db.search(option)
         	.then(res => {
-        		resolve(res);
+        		resolve(res.docs);
         	})
         	.catch(err => {
         		console.error(err);
