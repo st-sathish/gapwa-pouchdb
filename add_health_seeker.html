@@ -61,11 +61,11 @@
                 <div class="col-sm-12 col-md-12" id = "bor">
                     <div class="col-sm-4 offset-sm-4">
                         <div class="title text-center">
-                            <h1 class="title-blue mt-5" style="font-size:25px;">Add Health Seeker</h1>
+                            <!--<h1 class="title-blue mt-5" style="font-size:25px;">Add Health Seeker</h1>-->
                             <div class="row" style=" padding-left: 5px; padding-right: 5px">
                                 <form  action="contact.php" method="post">
                                     <div class="row">
-                                        <div class="col-md-12">
+                                        <!--<div class="col-md-12">
                                             <div class="form-group in_name">
                                                 <input type="text" name="name" id="name" class="form-control" placeholder=" Name" required="required">
                                             </div>
@@ -78,6 +78,85 @@
                                         <div class="col-md-12">
                                             <div class="form-group in_email">
                                                 <input name="mobile" type="tel" class="form-control" id="mobile" placeholder=" Mobile" required="required">
+                                            </div>
+                                        </div>-->
+                                        <div class="col-md-12 mt-5">
+                                            <h6 style="float:left;font-weight:bold;">Program Location:</h6>
+                                            <select class="form-control" id="country" onchange="consultancy.stateListRestCall()">
+                                                <option value="0">--select--</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-12 mt-2">
+                                            <h6 style="float:left;font-weight:bold;">Personal Information:</h6>
+                                            <div class="form-group in_email">
+                                                <input name="Govt_Mother_Id" type="tel" class="form-control" id="gmi" placeholder="Govt Mother Id" required="required">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group in_email">
+                                                <input name="mother_name" type="tel" class="form-control" id="mother_name" placeholder="Mother name" required="required">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group in_email">
+                                                <input name="age" type="text" id="age" class="form-control" placeholder=" Age" required="required">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group in_email">
+                                                <input name="contact" type="text" id="contact" class="form-control" placeholder=" Contact" required="required">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group in_email">
+                                                <input name="occupation" type="text" id="occupation" class="form-control" placeholder=" Occupation" required="required">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group in_email">
+                                                <input name="Husband Name" type="text" id="Husband_Name" class="form-control" placeholder=" Husband Name" required="required">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group in_email">
+                                                <input name="Husband's Occupation" type="text" id="Husband_Occupation" class="form-control" placeholder=" Husband Occupation" required="required">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <h6 style="float:left;font-weight:bold;">Health Information:</h6>
+                                            <div class="form-group in_email">
+                                                <input name="Visit_Date" type="date" class="form-control" id="visit_date" placeholder="Visited date" required="required">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group in_email">
+                                                <input name="Height" type="text" id="Height" class="form-control" placeholder=" Height" required="required">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group in_email">
+                                                <input name="Weight" type="text" id="weight" class="form-control" placeholder=" Weight" required="required">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group in_email">
+                                                <input name="BP" type="text" id="bp" class="form-control" placeholder=" Blood Pressure" required="required">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group in_email">
+                                                <input name="Hemoglobin" type="text" id="Hemoglobin" class="form-control" placeholder=" Hemoglobin" required="required">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group in_email">
+                                                <input name="Blood Sugar" type="text" id="Blood_sugar" class="form-control" placeholder=" Blood sugar" required="required">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group in_email">
+                                                <input name="urine Albumin" type="text" id="urine_albumin" class="form-control" placeholder=" Urine Albumin" required="required">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
