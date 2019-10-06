@@ -24,6 +24,7 @@
     <script src="assets/hs.api.js"></script>
     <script src="assets/hs.presenter.js"></script>
     <script src="assets/hs.ui.js"></script>
+    <script src="assets/storage.js"></script>
 </head>
 <body>
 <div class="d-flex" id="wrapper">
@@ -65,9 +66,22 @@
                         <div class="row" style=" padding-left: 5px; padding-right: 5px">
                             <form  action="contact.php" method="post">
                                 <div class="row">
+                                    <div class="col-md-12 mt-5">
+                                    <h6 style="float:left;font-weight:bold;">Program Location:</h6>
+                                        <select class="form-control" id="country" onchange="consultancy.stateListRestCall()">
+                                            <option value="0">--select--</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-12 mt-2">
+                                        <h6 style="float:left;font-weight:bold;">Personal Information:</h6>
+                                        <div class="form-group in_email">
+                                            <input name="Govt_Mother_Id" type="tel" class="form-control" id="gmi" placeholder="Govt Mother Id" required="required">
+                                        </div>
+                                    </div>
                                     <div class="col-md-12">
-                                        <div class="form-group in_name">
-                                            <input type="text" name="name" id="name" class="form-control" placeholder=" Name" required="required">
+                                        <div class="form-group in_email">
+                                            <input name="mother_name" type="tel" class="form-control" id="mother_name" placeholder="Mother name" required="required">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
@@ -77,11 +91,26 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group in_email">
-                                            <input name="mobile" type="tel" class="form-control" id="mobile" placeholder=" Mobile" required="required">
+                                            <input name="contact" type="text" id="contact" class="form-control" placeholder=" Contact" required="required">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <input type="button" value="Save Details" style="font-size:15px;" name="submit" id="submit" class="submitbtn small" title="Submit Your Message!" onclick="healthseeker.update()">
+                                        <div class="form-group in_email">
+                                            <input name="occupation" type="text" id="occupation" class="form-control" placeholder=" Occupation" required="required">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group in_email">
+                                            <input name="Husband Name" type="text" id="Husband_Name" class="form-control" placeholder=" Husband Name" required="required">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group in_email">
+                                            <input name="Husband's Occupation" type="text" id="Husband_Occupation" class="form-control" placeholder=" Husband Occupation" required="required">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input type="button" value="Next" style="font-size:15px;" name="submit" id="submit" class="submitbtn small" title="Submit Your Message!" onclick="healthseeker.next('edit_health_information.html')">
                                     </div>
                                 </div>
                             </form>
