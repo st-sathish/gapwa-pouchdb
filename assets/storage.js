@@ -10,6 +10,6 @@ storage.getHealthSeeker = function() {
 	return JSON.parse(localStorage.getItem(storage.KEY_HEALTH_SEEKER));
 }
 
-storage.resetHealthSeeker = function(data) {
-	return JSON.parse(localStorage.getItem(storage.KEY_HEALTH_SEEKER));
+storage.resetHealthSeeker = function() {
+	return localStorage.removeItem(storage.KEY_HEALTH_SEEKER);
 }

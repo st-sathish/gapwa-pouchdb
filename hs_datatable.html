@@ -34,8 +34,7 @@
         <div class="list-group list-group-flush">
             <a href="index.html" class="list-group-item list-group-item-action bg-light"><i class="fa fa-tachometer" aria-hidden="true"> </i> Dashboard</a>
             <a href="add_health_seeker.html" class="list-group-item list-group-item-action bg-light"><i class="fa fa-medkit" aria-hidden="true"> </i> Add Health Seeker</a>
-            <a href="online_hs_datatable.html" class="list-group-item list-group-item-action bg-light"><i class="fa fa-signal" aria-hidden="true"> </i> Online Health Seeker</a>
-            <a href="offline_hs_datatable.html" class="list-group-item list-group-item-action bg-light"><i class="fa fa-chain-broken"> </i> Offline Health Seeker</a>
+            <a href="hs_datatable.html" class="list-group-item list-group-item-action bg-light"><i class="fa fa-chain-broken"> </i> Health Seeker</a>
         </div>
     </div>
     <div id="page-content-wrapper">
@@ -59,12 +58,17 @@
             </div>
         </nav>
         <div class="container-fluid">
-            <table id="online_datatable" class="table table-hover table-responsive-md" style="width: 100%">
+            <div class="search">
+                <div class="txt" style ="display:inline; float:right;margin-top:8px;"><input type="text" id="offline_search"></div>
+                <div class="btn"  style ="display:inline; float:right;"><input type="button" value="Search" onclick="hsDataTable.searchOffline()"></div>
+            </div>
+            <table id="offline_datatable" class="table table-hover table-responsive-md" style="width: 100%">
                 <thead>
                 <tr>
-                    <th>Name</th>
+                    <th>Mother Name</th>
                     <th>Age</th>
-                    <th>Mobile</th>
+                    <th>Husband Name</th>
+                    <th>Last Synced At</th>
                     <th>Actions</th>
                 </tr>
                 </thead>

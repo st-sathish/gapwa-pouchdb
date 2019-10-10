@@ -1,6 +1,8 @@
 // initialize db
 var pouchDB = new PouchDB('growayuassist');
 
+var KEY_HEALTH_SEEKER_TABLE = "health_seeker_table";
+var KEY_SYNC_TABLE = "sync_table";
 
 // create index for fields
 pouchDB.createIndex({
@@ -75,5 +77,30 @@ db.search = function(option) {
         }).catch(err => {
             reject(err);
         });
+    })
+}
+
+db.saveSyncData = function(data) {
+  return new Promise(function(resolve, reject) {
+      data.type = db.KEY_SYNC_TABLE;
+      pouchDB.post(data).then(result => {
+          resolve(result);
+      }).catch(err => {
+          reject(err);
+      });
+  })
+}
+
+db.updateSyncData = function(data) {
+    return new Promise(function(resolve, reject) {
+      var option = {'force': true};
+      data.type = db.KEY_SYNC_TABLE;
+      pouchDB.put(data, option)
+          .then(res => {
+              resolve(res);
+          })
+          .catch(err => {
+              reject(err);
+          });
     })
 }
