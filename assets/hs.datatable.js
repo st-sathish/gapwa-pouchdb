@@ -27,9 +27,9 @@ var hsDataTable = new (function() {
 		datatable = $('#offline_datatable').DataTable({
 			"searching": false,
         	'columns': [
-		        { 'data': 'motherName' },
+		        { 'data': 'mother_name' },
 		        { 'data': 'age' },
-		        { 'data': 'husbandName' },
+		        { 'data': 'husband_name' },
 		        { 'data': 'last_synced_at' },
 		        {
 		        	'data' : null,

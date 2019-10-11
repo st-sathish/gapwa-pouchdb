@@ -25,10 +25,8 @@ hsPresenter.save = function(data) {
 			}
 			data.mode = 'offline';
 			data.last_synced_at = null;
+			data.do_sync = true;
 			save(data)
-				.then(res => {
-					return db.saveSyncData(res);
-				})
 				.then(res => {
 					resolve(res);
 				})
@@ -155,7 +153,7 @@ hsPresenter.getHealthSeekers = function(data) {
         	.then(rows => {
         		var docs = [];
         		for(var i =0;i < rows.length;i++) {
-        			if(!rows[i].doc.name) {
+        			if(rows[i].doc.views) {
         				continue;
         			}
         			docs.push(rows[i].doc);

@@ -19,13 +19,13 @@ var healthseeker = new (function() {
 		var husbandOccupation = $("#Husband_Occupation").val();
 
 		var data = {};
-		data.govtMotherId = govtMotherId;
-		data.motherName = motherName;
+		data.govt_mother_id = govtMotherId;
+		data.mother_name = motherName;
 		data.age = age;
 		data.contact = contact;
 		data.occupation = occupation;
-		data.husbandName = husbandName;
-		data.husbandOccupation = husbandOccupation;
+		data.husband_name = husbandName;
+		data.husband_occupation = husbandOccupation;
 		var parameters = new URL(window.location).searchParams;
 		var id = parameters.get("id");
 		if(id) {
