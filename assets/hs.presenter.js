@@ -2,13 +2,11 @@ var hsPresenter = {} || hsPresenter;
 
 hsPresenter.save = function(data) {
 	return new Promise(function(resolve, reject) {
-		//always 1 for time being
-		data.hcc_id = 1;
 		data.created_at = new Date().getTime();
 		data.updated_at = new Date().getTime();
 		var isOnline = window.navigator.onLine;
 		alert("is online :"+isOnline);
-		if(isOnline) {
+		if(!isOnline) {
 			hsApi.saveOrUpdateHealthSeeker(data).then(res => {
 				console.log(res);
 				resolve(res);
@@ -17,20 +15,17 @@ hsPresenter.save = function(data) {
 				reject(err);
 			})
 		} else {
-			if(data.name == '') {
-				reject("Please enter your name");
+			if(data.motherName == '') {
+				reject("Please enter your mother name");
 				return;
 			}
 			if(data.age == '') {
 				reject("Please enter your age");
 				return;
 			}
-			if(data.mobile == '') {
-				reject("Please enter your mobile");
-				return;
-			}
 			data.mode = 'offline';
 			data.last_synced_at = null;
+			data.do_sync = true;
 			save(data)
 				.then(res => {
 					resolve(res);
@@ -152,13 +147,13 @@ hsPresenter.getOnlineHealthSeekers = function() {
 /**
 * get offline health seekers
 */
-hsPresenter.getOfflineHealthSeekers = function(data) {
+hsPresenter.getHealthSeekers = function(data) {
 	return new Promise(function(resolve, reject) {
 		db.fetchAll()
         	.then(rows => {
         		var docs = [];
         		for(var i =0;i < rows.length;i++) {
-        			if(!rows[i].doc.name) {
+        			if(rows[i].doc.views) {
         				continue;
         			}
         			docs.push(rows[i].doc);

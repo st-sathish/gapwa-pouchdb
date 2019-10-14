@@ -3,34 +3,42 @@ var healthseeker = new (function() {
 	var self = this;
 
 	function reset() {
-		$("#name").val('');
+		$("#gmi").val('');
 		$("#mobile").val('');
 		$("#age").val('');
 		location.href = '/gapwa/offline_hs_datatable.html';
 	}
 
-	self.save = function() {
-		var name = $("#name").val();
-		var mobile = $("#mobile").val();
+	self.next = function(template) {
+		var govtMotherId = $("#gmi").val();
+		var motherName = $("#mother_name").val();
 		var age = $("#age").val();
+		var contact = $("#contact").val();
+		var occupation = $("#occupation").val();
+		var husbandName = $("#Husband_Name").val();
+		var husbandOccupation = $("#Husband_Occupation").val();
 
-		// construct
 		var data = {};
-		data.name = name;
-		data.mobile = mobile;
+		data.govt_mother_id = govtMotherId;
+		data.mother_name = motherName;
 		data.age = age;
-		hsPresenter.save(data)
-			.then(res => {
-				alert("Successfully Saved");
-				reset();
-			})
-			.catch(err => {
-				alert(err);
-				console.log(err);
-			});
+		data.contact = contact;
+		data.occupation = occupation;
+		data.husband_name = husbandName;
+		data.husband_occupation = husbandOccupation;
+		var parameters = new URL(window.location).searchParams;
+		var id = parameters.get("id");
+		if(id) {
+			data.id = id;
+			template = template+'?id='+id;
+		}
+		storage.saveHealthSeeker(data);
+		location.href = '/gapwa/'+template;
 	}
 
 	self.update = function() {
+		var data = storage.getHealthSeeker();
+
 		var name = $("#name").val();
 		var mobile = $("#mobile").val();
 		var age = $("#age").val();
@@ -43,6 +51,7 @@ var healthseeker = new (function() {
 		data.age = age;
 		hsPresenter.update(id, data)
 			.then(res => {
+				storage.resetHealthSeeker();
 				alert("Successfully Updated");
 				reset();
 			})

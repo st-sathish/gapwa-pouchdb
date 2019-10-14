@@ -2,9 +2,9 @@ var hsDataTable = new (function() {
 	var self = this;
 	var datatable;
 
-	function getOfflineHealthSeekers() {
+	function getHealthSeekers() {
 		initOfflineDataTable();
-		hsPresenter.getOfflineHealthSeekers()
+		hsPresenter.getHealthSeekers()
 			.then(data => {
 				console.log(data);
 				refreshDataTable(data);
@@ -27,9 +27,9 @@ var hsDataTable = new (function() {
 		datatable = $('#offline_datatable').DataTable({
 			"searching": false,
         	'columns': [
-		        { 'data': 'name' },
+		        { 'data': 'mother_name' },
 		        { 'data': 'age' },
-		        { 'data': 'mobile' },
+		        { 'data': 'husband_name' },
 		        { 'data': 'last_synced_at' },
 		        {
 		        	'data' : null,
@@ -70,7 +70,7 @@ var hsDataTable = new (function() {
 			})
 	}
 	$(document).ready(function() {
-        getOfflineHealthSeekers();
+        getHealthSeekers();
 	});
 	return self;
 })();

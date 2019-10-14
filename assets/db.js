@@ -1,11 +1,13 @@
 // initialize db
 var pouchDB = new PouchDB('growayuassist');
 
+var KEY_HEALTH_SEEKER_TABLE = "health_seeker_table";
+var KEY_SYNC_TABLE = "sync_table";
 
 // create index for fields
 pouchDB.createIndex({
     index: {
-        fields: ['name', 'mobile'],
+        fields: ['mother_name', 'mobile', 'husband_name'],
         name: 'hsindex',
         ddoc: 'hsdoc',
         type: 'json',
