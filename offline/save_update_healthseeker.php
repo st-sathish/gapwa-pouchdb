@@ -4,7 +4,7 @@ create database growayuassist_pwa
 create table health_seeker(health_seeker_id int(11) NOT NULL AUTO_INCREMENT, name varchar(255), age int(11), mobile bigint(11), mode ENUM('online','offline') 
 NOT NULL DEFAULT  'online', created_at datetime, updated_at datetime, hcc_id int(11), PRIMARY KEY (`health_seeker_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 */
-$conn = new mysqli("localhost", "root", "root", "growayuassist_pwa");
+$conn = new mysqli("localhost", "growayu12", "GrowAyu@dy0zy0", "growayuassist_pwa");
 
 $payload = json_decode(file_get_contents("php://input"), false);
 $response = array();
