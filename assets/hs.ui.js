@@ -63,9 +63,14 @@ var healthseeker = new (function() {
 	function initOfflineEdit(id) {
 		hsPresenter.getOfflineHealthSeeker(id)
 			.then(res => {
-				$("#name").val(res.name);
-				$("#mobile").val(res.mobile);
+				storage.saveHealthSeeker(res);
+				$("#gmi").val(res.govt_mother_id);
+				$("#mother_name").val(res.mother_name);
 				$("#age").val(res.age);
+				$("#contact").val(res.contact);
+				$("#occupation").val(res.occupation);
+				$("#Husband_Name").val(res.husband_name);
+				$("#Husband_Occupation").val(res.husband_occupation);
 			})
 			.catch(err => {
 				console.debug(err);
