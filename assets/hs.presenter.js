@@ -50,9 +50,14 @@ hsPresenter.update = function(id, data) {
 		} else {
 			db.findOne(id)
 				.then(doc => {
-					doc.name = data.name;
+					doc.govt_mother_id = data.govt_mother_id;
+					doc.mother_name = data.mother_name;
 					doc.age = data.age;
-					doc.mobile = data.mobile;
+					doc.contact = data.contact;
+					doc.occupation = data.occupation;
+					doc.husband_name = data.husband_name;
+					doc.husband_occupation = data.husband_occupation;
+					doc.health_parameter = data.health_parameter;
 					doc.updated_at = new Date().getTime();
 					return update(doc);
 				})
