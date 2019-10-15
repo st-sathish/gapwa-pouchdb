@@ -4,8 +4,12 @@ var healthseeker = new (function() {
 
 	function reset() {
 		$("#gmi").val('');
-		$("#mobile").val('');
+		$("#mother_name").val('');
 		$("#age").val('');
+		$("#contact").val('');
+		$("#occupation").val('');
+		$("#Husband_Name").val('');
+		$("#Husband_Occupation").val('');
 		location.href = '/gapwa/offline_hs_datatable.html';
 	}
 
@@ -29,41 +33,15 @@ var healthseeker = new (function() {
 		var parameters = new URL(window.location).searchParams;
 		var id = parameters.get("id");
 		if(id) {
-			data.id = id;
-			template = template+'?id='+id;
+			template = template+'?id='+id+'&mode='+parameters.get("mode");
 		}
 		storage.saveHealthSeeker(data);
 		location.href = '/gapwa/'+template;
 	}
 
-	self.update = function() {
-		var data = storage.getHealthSeeker();
-
-		var name = $("#name").val();
-		var mobile = $("#mobile").val();
-		var age = $("#age").val();
-		var parameters = new URL(window.location).searchParams;
-		var id = parameters.get("id");
-		// construct
-		var data = {};
-		data.name = name;
-		data.mobile = mobile;
-		data.age = age;
-		hsPresenter.update(id, data)
-			.then(res => {
-				storage.resetHealthSeeker();
-				alert("Successfully Updated");
-				reset();
-			})
-			.catch(err => {
-				console.log(err);
-			});
-	}
-
 	function initOfflineEdit(id) {
 		hsPresenter.getOfflineHealthSeeker(id)
 			.then(res => {
-				storage.saveHealthSeeker(res);
 				$("#gmi").val(res.govt_mother_id);
 				$("#mother_name").val(res.mother_name);
 				$("#age").val(res.age);

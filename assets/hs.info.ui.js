@@ -12,9 +12,21 @@ var hs_info = new (function() {
 	}
 
 	self.save = function() {
+		var data = concatFieldValue();
+		hsPresenter.save(data)
+			.then(res => {
+				storage.resetHealthSeeker();
+				alert("Successfully Saved");
+				reset();
+			})
+			.catch(err => {
+				alert(err);
+				console.log(err);
+			});
+	}
 
+	function concatFieldValue() {
 		var data = storage.getHealthSeeker();
-
 		var visit_date = $("#visit_date").val();
 		var height = $("#Height").val();
 		var weight = $("#weight").val();
@@ -34,28 +46,20 @@ var hs_info = new (function() {
 		health_parameter.urine_albumin = urine_albumin;
 
 		data.health_parameter = health_parameter;
-		hsPresenter.save(data)
-			.then(res => {
-				storage.resetHealthSeeker();
-				alert("Successfully Saved");
-				reset();
-			})
-			.catch(err => {
-				alert(err);
-				console.log(err);
-			});
+		return data;
 	}
 
 	function initOfflineEdit(id) {
 		hsPresenter.getOfflineHealthSeeker(id)
 			.then(res => {
-				$("#visit_date").val();
-				$("#Height").val();
-				$("#weight").val();
-				$("#bp").val();
-				$("#Hemoglobin").val();
-				$("#Blood_sugar").val();
-				$("#urine_albumin").val();
+				var data = res.health_parameter;
+				$("#visit_date").val(data.visit_date);
+				$("#Height").val(data.height);
+				$("#weight").val(data.weight);
+				$("#bp").val(data.bp);
+				$("#Hemoglobin").val(data.hemoglobin);
+				$("#Blood_sugar").val(data.blood_sugar);
+				$("#urine_albumin").val(data.urine_albumin);
 			})
 			.catch(err => {
 				console.debug(err);
@@ -63,18 +67,9 @@ var hs_info = new (function() {
 	}
 
 	self.update = function() {
-		var data = storage.getHealthSeeker();
-
-		var name = $("#name").val();
-		var mobile = $("#mobile").val();
-		var age = $("#age").val();
 		var parameters = new URL(window.location).searchParams;
 		var id = parameters.get("id");
-		// construct
-		var data = {};
-		data.name = name;
-		data.mobile = mobile;
-		data.age = age;
+		var data = concatFieldValue();
 		hsPresenter.update(id, data)
 			.then(res => {
 				storage.resetHealthSeeker();
