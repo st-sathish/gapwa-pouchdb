@@ -40,7 +40,7 @@ hsPresenter.save = function(data) {
 hsPresenter.update = function(id, data) {
 	return new Promise(function(resolve, reject) {
 		var isOnline = window.navigator.onLine;
-		if(isOnline) {
+		if(!isOnline) {
 			hsApi.saveOrUpdateHealthSeeker(data).then(res => {
 				resolve(res);
 			})
