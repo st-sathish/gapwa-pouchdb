@@ -25,6 +25,34 @@
     <script src="assets/hs.presenter.js"></script>
     <script src="assets/hs.ui.js"></script>
     <script src="assets/storage.js"></script>
+    <style>
+        input[type=text], select {
+            width: 50%;
+            height : 30px;
+            padding: 10px 15px;
+            margin: 5px 0;
+            display: inline;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color : #b3e0ff;
+        }
+
+
+        label {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            text-align: left;
+            width: 400px;
+            line-height: 38px;
+            font-size: 12px;
+
+        }
+        .btn{
+            border-radius: 100px;
+        }
+    </style>
 </head>
 <body>
 <div class="d-flex" id="wrapper">
@@ -57,66 +85,82 @@
                 </ul>
             </div>
         </nav>
-        <div class="container-fluid">
-                <div class="col-sm-12 col-md-12" id = "bor">
-                    <div class="col-sm-4 offset-sm-4">
-                        <div class="title text-center">
-                            <!--<h1 class="title-blue mt-5" style="font-size:25px;">Add Health Seeker</h1>-->
-                            <div class="row" style=" padding-left: 5px; padding-right: 5px">
-                                <form  action="contact.php" method="post">
-                                    <div class="row">
-                                        <div class="col-md-12 mt-5">
-                                            <h6 style="float:left;font-weight:bold;">Program Location:</h6>
-                                            <select class="form-control" id="country" onchange="consultancy.stateListRestCall()">
-                                                <option value="0">--select--</option>
-                                                <option value="bangalore">Bangalore</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="col-md-12 mt-2">
-                                            <h6 style="float:left;font-weight:bold;">Personal Information:</h6>
-                                            <div class="form-group in_email">
-                                                <input name="Govt_Mother_Id" type="tel" class="form-control" id="gmi" placeholder="Govt Mother Id" required="required">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group in_email">
-                                                <input name="mother_name" type="tel" class="form-control" id="mother_name" placeholder="Mother name" required="required">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group in_email">
-                                                <input name="age" type="text" id="age" class="form-control" placeholder=" Age" required="required">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group in_email">
-                                                <input name="contact" type="text" id="contact" class="form-control" placeholder=" Contact" required="required">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group in_email">
-                                                <input name="occupation" type="text" id="occupation" class="form-control" placeholder=" Occupation" required="required">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group in_email">
-                                                <input name="Husband Name" type="text" id="Husband_Name" class="form-control" placeholder=" Husband Name" required="required">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group in_email">
-                                                <input name="Husband's Occupation" type="text" id="Husband_Occupation" class="form-control" placeholder=" Husband Occupation" required="required">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <input type="button" value="Next" style="font-size:15px;" name="submit" id="submit" class="submitbtn small" title="Submit Your Message!" onclick="healthseeker.next('add_health_information.html')">
-                                        </div>
-                                    </div>
-                                </form>
+        <div class="container-fluid" id = "id">
+            <div class="col-sm-12 col-sm-12" id = "bor">
+                <div class="col-sm-12">
+                    <div class="col-sm-12">
+                        <div class="form-group mt-1">
+                            <div class = "button" style="float:right">
+                                <button type="button" class="btn btn-primary" onclick="store.doCancel()" ><i class="fa fa-home" aria-hidden="true"></i></button>
                             </div>
                         </div>
+                    </div><br>
+                    <div class="form-group col-sm-10 offset-sm-2 mt-5">
+                        <div class="form-group mt-3">
+                            <h6 class="col-sm-8" style="background-color: #d2d0fe;padding:2px;">Program Location :</h6>
+                            <br>
+                            <select type="text" class="form-control col-sm-4 offset-sm-3" name="country" id="country">
+                                <option value=" ">-----select-----</option>
+                                <option value="bangalore">Bangalore</option>
+                            </select>
+                        </div><br>
+                        <div class="form-group">
+                            <h6 class="col-sm-8" style="background-color: #d2d0fe;padding:2px;">Personal Information :</h6>
+                            <div class = "form-inline col-sm-7 offset-sm-1">
+                                <label class="justify-content-between">
+                                    <span>Govt Mother Id:</span><input type="text" class="form-control" id="gmi">
+                                </label>
+                            </div><br>
+                        <div class="form-group">
+                            <div class = "form-inline col-sm-7 offset-sm-1">
+                                <label class="justify-content-between">
+                                    Mother Name : <input type="text" class="form-control" id="mother_name">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class = "form-inline col-sm-7 offset-sm-1">
+                                <label class="justify-content-between">
+                                    Age : <input type="text" class="form-control" id="age">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class = "form-inline col-sm-7 offset-sm-1">
+                                <label class="justify-content-between">
+                                    Contact : <input type="text" class="form-control" id="contact">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class = "form-inline col-sm-7 offset-sm-1">
+                                <label class="justify-content-between">
+                                    Occupation : <input type="text" class="form-control" id="occupation">
+                                </label>
+                        </div>
+                        <div class="form-group">
+                            <div class = "form-inline col-sm-7 offset-sm-1">
+                                <label class="justify-content-between">
+                                    Husband Name : <input type="text" class="form-control" id="Husband_Name">
+                                </label>
+                        </div>
+                            <div class="form-group">
+                                <div class = "form-inline col-sm-7 offset-sm-1">
+                                    <label class="justify-content-between">
+                                        Husband Occupation : <input type="text" class="form-control" id="Husband_Occupation">
+                                    </label>
+                            </div>
+                    </div>
+                    </div>
                 </div>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <div class="button" style="float:right">
+                            <button type="button" class="btn btn-primary" id="submit" title="Submit Your Message!" onclick="healthseeker.next('add_health_information.html')">Next <i class="fa fa-arrow-circle-right"  aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             </div>
     </div>
 </div>
