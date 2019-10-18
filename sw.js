@@ -4,6 +4,9 @@ var filesToCache = [
   '/add_health_seeker.html',
   '/edit_health_seeker.html',
   '/offline_hs_datatable.html',
+  '/add_health_information.html',
+  '/edit_health_information.html',
+  '/hs_datatable.html',
   '/online_hs_datatable.html',
   '/css/bootstrap/bootstrap.css',
   '/css/bootstrap/bootstrap-grid.css',
@@ -29,10 +32,6 @@ var filesToCache = [
   '/images/hello-icon-192.png',
   '/images/hello-icon-256.png',
   '/images/hello-icon-512.png',
-  '/offline/downstream.php',
-  '/offline/getHealthSeekerList.php',
-  '/offline/save_update_healthseeker.php',
-  '/offline/upstream.php',
   '/templates/sync.tpl',
   '/assets/css/simple-sidebar.css',
   '/assets/lib/css/jquery-ui.css',
@@ -60,11 +59,14 @@ var filesToCache = [
   '/assets/api.js',
   '/assets/db.js',
   '/assets/hs.api.js',
+  '/assets/hs.datatable.js',
+  '/assets/hs.info.ui.js',
   '/assets/hs.presenter.js',
   '/assets/hs.ui.js',
   '/assets/main.js',
   '/assets/offline.hs.datatable.js',
-  '/assets/online.hs.datatable.js'
+  '/assets/online.hs.datatable.js',
+  '/assets/storage.js'
 ];
 
 /* Start the service worker and cache all of the app's content */

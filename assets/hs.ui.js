@@ -36,7 +36,8 @@ var healthseeker = new (function() {
 			template = template+'?id='+id+'&mode='+parameters.get("mode");
 		}
 		storage.saveHealthSeeker(data);
-		location.href = '/gapwa/'+template;
+		//location.href = '/gapwa/'+template;
+		location.href = '/'+template;
 	}
 
 	function initOfflineEdit(id) {
