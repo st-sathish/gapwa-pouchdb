@@ -35,7 +35,7 @@ var hsDataTable = new (function() {
 		        	'data' : null,
 		        	'render' : function(row) {
 		        	 	var action = "<div>";
-		        	 	action = action + "<a href =/edit_health_seeker.html?mode=offline&id="+row._id+">Edit</a>&nbsp;&nbsp;";
+		        	 	action = action + "<a href =/gapwa/edit_health_seeker.html?mode=offline&id="+row._id+">Edit</a>&nbsp;&nbsp;";
 		        	 	/*action = action + "<a href ='javascript:void(0)' onclick='hsDataTable.sync(\""+row._id+"\")'>Sync</a>";*/
 		        	 	action = action + "<div>";
 		        	 	return action;

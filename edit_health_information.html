@@ -58,60 +58,52 @@
                 </ul>
             </div>
         </nav>
-        <div class="container-fluid">
-                <div class="col-sm-12 col-md-12" id = "bor">
-                    <div class="col-sm-4 offset-sm-4">
-                        <div class="title text-center">
-                            <!--<h1 class="title-blue mt-5" style="font-size:25px;">Add Health Seeker</h1>-->
-                            <div class="row" style=" padding-left: 5px; padding-right: 5px">
-                                <form  action="contact.php" method="post">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <h6 style="float:left;font-weight:bold;">Health Information:</h6>
-                                            <div class="form-group in_email">
-                                                <input name="Visit_Date" type="date" class="form-control" id="visit_date" placeholder="Visited date" required="required">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group in_email">
-                                                <input name="Height" type="text" id="Height" class="form-control" placeholder=" Height" required="required">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group in_email">
-                                                <input name="Weight" type="text" id="weight" class="form-control" placeholder=" Weight" required="required">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group in_email">
-                                                <input name="BP" type="text" id="bp" class="form-control" placeholder=" Blood Pressure" required="required">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group in_email">
-                                                <input name="Hemoglobin" type="text" id="Hemoglobin" class="form-control" placeholder=" Hemoglobin" required="required">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group in_email">
-                                                <input name="Blood Sugar" type="text" id="Blood_sugar" class="form-control" placeholder=" Blood sugar" required="required">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group in_email">
-                                                <input name="urine Albumin" type="text" id="urine_albumin" class="form-control" placeholder=" Urine Albumin" required="required">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <input type="button" value="Back" style="font-size:15px;" name="submit" id="submit" class="submitbtn small" onclick="hs_info.goBack()">
-                                            <input type="button" value="Update" style="font-size:15px;" name="submit" id="submit" class="submitbtn small" title="Submit Your Message!" onclick="hs_info.update()">
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
+        <div class="container">
+            <div class = "row">
+                <div class="form-group col-sm-12">
+                    <div class="form-inline mt-5">
+                        <h6 class="col-sm-12" style="background-color: #d2d0fe;padding:2px;">Health Information :</h6></div>
+                    <div class="form-inline">
+                        <div class ="col align-self-center"><h6>Visit Date</h6></div>
+                        <div class ="col align-self-center"><input type="date" class="form-control" id="visit_date"></div>
+                    </div><br>
+                    <div class="form-inline">
+                        <div class = "col align-self-center"><h6>Height(in cms)</h6></div>
+                        <div class ="col align-self-center"><input type="text" class="form-control" id="Height"></div>
+                    </div><br>
+                    <div class="form-inline">
+                        <div class="col align-self-center"><h6>Weight(in Kgs)</h6></div>
+                        <div class="col align-self-center"><input type="text" class="form-control" id="weight"></div>
+                    </div><br>
+                    <div class="form-inline">
+                        <div class="col align-self-center"><h6>BP</h6></div>
+                        <div class="col align-self-center"><input type="text" class="form-control" id="bp"></div>
+                    </div><br>
+                    <div class="form-inline">
+                        <div class="col align-self-center"><h6>Hemoglobin</h6></div>
+                        <div class="col align-self-center"><input type="text" class="form-control" id="Hemoglobin"></div>
+                    </div><br>
+                    <div class="form-inline">
+                        <div class="col align-self-center"><h6>Blood Sugar</h6></div>
+                        <div class="col align-self-center"><input type="text" class="form-control" id="Blood_sugar"></div>
+                    </div><br>
+                    <div class="form-inline">
+                        <div class="col align-self-center"><h6>urine Albumin</h6></div>
+                        <div class="col align-self-center"><input type="text" class="form-control" id="urine_albumin"></div>
+                    </div>
                 </div>
             </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <div class="button" style="float:right">
+                        <button type="button" class="btn btn-primary" onclick="hs_info.update()">Update <i class="fa fa-arrow-circle-right"  aria-hidden="true"></i></button>
+                    </div>
+                    <div class="button" style="float:left">
+                        <button type="button" class="btn btn-primary" onclick="hs_info.goBack()" ><i class="fa fa-arrow-circle-left"  aria-hidden="true"></i> Back</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <!-- Bootstrap core JavaScript -->
