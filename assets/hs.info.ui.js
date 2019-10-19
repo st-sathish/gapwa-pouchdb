@@ -3,7 +3,8 @@ var hs_info = new (function() {
 	var self = this;
 
 	function reset() {
-		location.href = '/gapwa/offline_hs_datatable.html';
+		//location.href = '/gapwa/offline_hs_datatable.html';
+		location.href = '/offline_hs_datatable.html';
 	}
 
 	self.goBack = function() {
